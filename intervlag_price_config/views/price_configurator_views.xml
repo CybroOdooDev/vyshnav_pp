@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="price_configurator_form_views" model="ir.ui.view">
+        <field name="name">price.configurator</field>
+        <field name="model">price.configurator</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group name="price_matrix_general">
+                        <group>
+                            <field name="name"/>
+                            <field name="print_type_id"/>
+                            <field name="currency_id" groups="base.group_multi_currency"/>
+                            <field name="product_material_id"/>
+                            <field name="product_size_id"/>
+                        </group>
+                        <group>
+                            <field name="customer_tag_ids" widget="many2many_tags"/>
+                            <field name="customer_class_id"/>
+                            <field name="print"/>
+                        </group>
+                    </group>
+                    <separator string="Price Matrix"/>
+                    <field name="price_matrix_ids">
+                        <tree string="Product Price Configuration" editable="bottom">
+                            <field name="min_qty"/>
+                            <field name="max_qty"/>
+                            <field name="cost_price"/>
+                            <field name="sale_price" widget='monetary'/>
+                            <field name="delivery_attribute_id"/>
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="price_config_tree_view" model="ir.ui.view">
+        <field name="name">product.config.tree</field>
+        <field name="model">price.configurator</field>
+        <field name="arch" type="xml">
+             <tree>
+                <field name="name"/>
+                <field name="print_type_id"/>
+                <field name="customer_tag_ids" widget="many2many_tags"/> <!-- display multipal tags 3-apr-19 KT -->
+                <field name="product_material_id"/>
+                <field name="product_size_id"/>
+                <field name="currency_id" groups="base.group_multi_currency"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="price_configurator_action" model="ir.actions.act_window">
+        <field name="name">Price Configuration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">price.configurator</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a price configuration.
+            </p>
+        </field>
+    </record>
+
+<!--    <menuitem id="prodgo_price_config_main" name="Product Price Configuration" parent="sale.menu_sale_config" sequence="6"/>-->
+    <menuitem id="menu_sale_config_price_configurator"
+              name="Price Configurator"
+              parent="sale.menu_sale_config"
+              sequence="3"/>
+
+    <menuitem action="price_configurator_action"
+              id="menu_price_config_action"
+              parent="intervlag_price_config.menu_sale_config_price_configurator"
+              sequence="1"/>
+
+</odoo>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <!-- Inherited the helpdesk.team kanban view for adding actions to display valid and invalid tickets-->
+<odoo>
+    <record id="helpdesk_team_view_kanban_inherit" model="ir.ui.view">
+        <field name="name">
+            helpdesk.team.view.kanban.inherit.sale.order.help.desk
+        </field>
+        <field name="model">helpdesk.team</field>
+        <field name="type">kanban</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_team_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_kanban_primary_right')]"
+                   position="inside">
+                <div class="mb4">
+                    <a name="action_view_valid_ticket" type="object"
+                       class="justify-content-between flex-nowrap d-inline-flex w-100">
+                        <span>Valid Tickets</span>
+                        <span class="ms-3">
+                            <field name="valid_ticket_count"/>
+                        </span>
+                    </a>
+                </div>
+                <div class="mb4">
+                    <a name="action_view_invalid_ticket" type="object"
+                       class="justify-content-between flex-nowrap d-inline-flex w-100">
+                        <span>Invalid Tickets</span>
+                        <span class="ms-3">
+                            <field name="invalid_ticket_count"/>
+                        </span>
+                    </a>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Inherited pricelist view for adding attribute field in pricelist-->
+<odoo>
+    <record id="product_pricelist_view_form_inherit" model="ir.ui.view">
+        <field name="name">product.pricelist.form.inherit</field>
+        <field name="model">product.pricelist</field>
+        <field name="inherit_id" ref="product.product_pricelist_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='item_ids']//tree[@groups='product.group_sale_pricelist']/field[@name='name']"
+                   position="after">
+                <field name="product_attribute_id"/>
+                <field name="attribute_value_ids" widget="many2many_tags"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_pricelist_item_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.pricelist.item.form.inherit</field>
+        <field name="model">product.pricelist.item</field>
+        <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+        <field name="arch" type="xml">
+        <xpath expr="//field[@name='product_tmpl_id']" position = "after">
+        <field name="product_attribute_id" attrs="{
+                                'invisible':[('applied_on', '!=', '1_product')]}"/>
+        <field name="attribute_value_ids" widget="many2many_tags" attrs="{
+                                'invisible':[('applied_on', '!=', '1_product')]}"/>
+       </xpath>
+        </field>
+    </record>
+</odoo>

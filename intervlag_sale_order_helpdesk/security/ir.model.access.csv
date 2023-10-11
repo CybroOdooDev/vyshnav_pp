@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_complaint_department,complaint.department.access,model_complaint_department,base.group_user,1,1,1,1
+access_complaint_category,complaint.category.access,model_complaint_category,base.group_user,1,1,1,1
