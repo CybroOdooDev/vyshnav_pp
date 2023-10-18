@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Menues in the configuration to add complaint department abd complaint category-->
+<odoo>
+    <menuitem
+            name="Complaint Department"
+            id="complaint_department_menu"
+            action="complaint_department_view_action"
+            parent="helpdesk.helpdesk_menu_config"
+    />
+    <menuitem
+            name="Complaint Categories"
+            id="complaint_category_menu"
+            action="complaint_category_view_action"
+            parent="helpdesk.helpdesk_menu_config"
+    />
+</odoo>

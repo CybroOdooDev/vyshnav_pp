@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_attribute_view_form_highlight_attribute" model="ir.ui.view">
+        <field name="name">product.attribute.view.form.size.attribute</field>
+        <field name="model">product.attribute</field>
+        <field name="inherit_id" ref="product.product_attribute_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='create_variant']" position="after">
+<!--                <field name="attribute_type"/>-->
+<!--                <field name="is_print_type" widget="boolean_toggle"/>-->
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
