@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="restriction_configurator_form_views" model="ir.ui.view">
+        <field name="name">restriction.configurator.form</field>
+        <field name="model">restriction.configurator</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    <separator string="restriction Rules"/>
+                    <field name="restriction_rule_ids">
+                        <tree string="Restriction Price Configuration"
+                              editable="bottom">
+                            <field name="attribute_id"/>
+                            <field name="condition"/>
+                            <field name="values_ids" widget="many2many_tags"/>
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="restriction_configurator_tree_view" model="ir.ui.view">
+        <field name="name">restriction.configurator.tree</field>
+        <field name="model">restriction.configurator</field>
+        <field name="arch" type="xml">
+             <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="restriction_configurator_action" model="ir.actions.act_window">
+        <field name="name">Restriction Configuration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">restriction.configurator</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create Restriction Rules.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_sale_restriction_rule_configurator"
+              name="Attribute Restriction Configurator"
+              parent="sale.menu_sale_config"
+              sequence="3"/>
+
+    <menuitem action="restriction_configurator_action"
+              id="menu_restriction_configurator_action"
+              parent="Intervlag_attribute_restriction.menu_sale_restriction_rule_configurator"
+              sequence="1"/>
+
+</odoo>

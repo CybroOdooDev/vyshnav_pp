@@ -1,0 +1,4 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_restriction_configurator,access.restriction.configurator,model_restriction_configurator,base.group_user,1,1,1,1
+access_restriction_rule,access.restriction.rule,model_restriction_rule,base.group_user,1,1,1,1
+access_product_attribute_rule,access.product.attribute.rule,model_product_attribute_rule,base.group_user,1,1,1,1

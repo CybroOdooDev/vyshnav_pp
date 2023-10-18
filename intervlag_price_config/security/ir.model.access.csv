@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-intervlag_price_config.access_group_price_configurator,access_price_configurator,intervlag_price_config.model_price_configurator,base.group_user,1,1,1,1
-intervlag_price_config.access_group_price_matrix,access_price_matrix,intervlag_price_config.model_price_matrix,base.group_user,1,1,1,1
