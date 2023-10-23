@@ -11,7 +11,8 @@
     'website': 'https://www.cybrosys.com',
     'depends': ['sale', 'contacts', 'intervlag_sale',
                 'intervlag_delivery_fedex',
-                'intervlag_gift_meter'],
+                'intervlag_gift_meter','sale_product_configurator',
+                'intervlag_product_config'],
     'data': [
         'data/print_type_data.xml',
         'security/ir.model.access.csv',
@@ -22,6 +23,12 @@
         'views/sale_order_views.xml',
         'views/variant_template.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            '/intervlag_price_config/static/src/css/**/*',
+            '/intervlag_price_config/static/src/js/**/*',
+        ],
+    },
     'license': "AGPL-3",
     'images': [],
     'installable': True,

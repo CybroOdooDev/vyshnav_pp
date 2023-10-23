@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from odoo import models, api, fields
+from odoo import models, api, fields, _
+from odoo.exceptions import ValidationError
 
 
 class SaleOrderLine(models.Model):
@@ -7,6 +8,7 @@ class SaleOrderLine(models.Model):
 
     @api.depends('product_id', 'product_uom', 'product_uom_qty')
     def _compute_price_unit(self):
+        global meter_square
         for line in self:
             if line.product_template_id.has_configurable_attributes:
                 customer_tag_ids = line.order_id.partner_id.category_id
@@ -30,9 +32,10 @@ class SaleOrderLine(models.Model):
 
                 print_type = (
                     line.product_no_variant_attribute_value_ids.filtered(
-                        lambda pc: pc.attribute_id.attribute_type == 'print_attribute'
-                                   and pc.id in
-                                   line.product_no_variant_attribute_value_ids.ids
+                        lambda
+                            pc: pc.attribute_id.attribute_type == 'print_attribute'
+                                and pc.id in
+                                line.product_no_variant_attribute_value_ids.ids
                     ).product_attribute_value_id)
                 domain = [(
                     'price_configurator_id.print_type_id', '=',
@@ -48,18 +51,49 @@ class SaleOrderLine(models.Model):
                      customer_class_id.id)]
                 quantity = 0
                 order_lines = line.order_id.order_line
-                similar_order_lines = order_lines.filtered(
-                    lambda
-                        x: x.product_no_variant_attribute_value_ids.ids == line.
-                    product_no_variant_attribute_value_ids.ids)
-                for qty in similar_order_lines:
-                    quantity += qty.product_uom_qty
-                domain.append(('min_qty', '<=', quantity))
-                domain.append(('max_qty', '>=', quantity))
-                price_configurator_price = line.env['price.matrix'].search(
-                    domain)
+                similar_order_lines = order_lines._origin.filtered(
+                    lambda x: x.product_attributes.get('Design_code') == line.
+                    product_attributes.get('Design_code'))
+                print(similar_order_lines, 'similar')
+                if print_type.print_type == 'digital':
+                    for qty in similar_order_lines:
+                        quantity += qty.product_uom_qty
+                    values = size.name.split('x')
+                    length = int(values[0])
+                    width = int(values[1])
+                    meter_square = (length * width) / 10000
+                    m2_quantity = quantity * int(meter_square)
+                    domain.append(('min_qty', '<=', m2_quantity))
+                    domain.append(('max_qty', '>=', m2_quantity))
+                    price_configurator_price = line.env['price.matrix'].search(
+                        domain)
+                    if len(price_configurator_price) > 1:
+                        raise ValidationError(
+                            _('There is a duplication in price configuration '
+                              'rule' + '::' + price_configurator_price[
+                                  0].price_configurator_id.name))
+                else:
+                    for qty in similar_order_lines:
+                        quantity += qty.product_uom_qty
+                    domain.append(('min_qty', '<=', quantity))
+                    domain.append(('max_qty', '>=', quantity))
+                    price_configurator_price = line.env['price.matrix'].search(
+                        domain)
+                    if len(price_configurator_price) > 1:
+                        raise ValidationError(
+                            _('There is a duplication in price configuration '
+                              'rule' + '::' + price_configurator_price[
+                                  0].price_configurator_id.name))
                 if price_configurator_price:
-                    line.price_unit = price_configurator_price.sale_price
+                    if not price_configurator_price.price_configurator_id.print_type_id.print_type == 'digital':
+                        line.price_unit = price_configurator_price.sale_price
+                    else:
+                        line.price_unit = price_configurator_price.sale_price * meter_square
+                    # atrribute_value = price_configurator_price.price_configurator_id.product_size_id.name
+                    # values = atrribute_value.split('x')
+                    # length = int(values[0])
+                    # width =int( values[1])
+                    # meter_square=(length*width)/10000
                 else:
                     if line.qty_invoiced > 0:
                         continue

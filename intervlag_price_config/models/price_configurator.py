@@ -12,7 +12,8 @@ class PriceConfigurator(models.Model):
                        default="NEW")
     print_type_id = fields.Many2one('product.attribute.value',
                                     string="Printing",
-                                    domain='[("attribute_type", "=", "print_attribute"),("attribute_id.create_variant","=","no_variant")]', required=True
+                                    domain='[("attribute_type", "=", "print_attribute"),("attribute_id.create_variant","=","no_variant")]',
+                                    required=True
                                     )
     currency_id = fields.Many2one('res.currency', string='Currency',
                                   default=lambda
@@ -41,6 +42,17 @@ class PriceConfigurator(models.Model):
             rec.name = str(rec.print_type_id.name) + ':' + str(
                 rec.product_material_id.name) + '-' + str(
                 rec.product_size_id.name)
+
+    # @api.model_create_multi
+    # def create(self, vals_list):
+    #     price_config = super(PriceConfigurator, self).create(vals_list)
+    #     price_config.price_matrix_ids._price_matrix_validation()
+    #     return price_config
+
+    def write(self, vals_list):
+        price_config = super(PriceConfigurator, self).write(vals_list)
+        self.price_matrix_ids._price_matrix_validation()
+        return price_config
 
 
 class PriceMatrix(models.Model):
@@ -71,3 +83,46 @@ class PriceMatrix(models.Model):
             if self.min_qty >= self.max_qty:
                 raise ValidationError(_('Minimum quantity must be less than '
                                         'Maximum quantity.'))
+
+    def _price_matrix_validation(self):
+        for rec in self:
+            price_rules = self.env['price.matrix'].search([(
+                'price_configurator_id.print_type_id',
+                '=',
+                rec.price_configurator_id.print_type_id.id),
+                (
+                    'price_configurator_id.product_material_id',
+                    '=',
+                    rec.price_configurator_id.product_material_id.id),
+                (
+                    'price_configurator_id.product_size_id',
+                    '=',
+                    rec.price_configurator_id.product_size_id.id),
+                (
+                    'price_configurator_id.customer_class_id',
+                    '=',
+                    rec.price_configurator_id.customer_class_id.id),
+                ('min_qty', '=',
+                 rec.min_qty), (
+                    'max_qty', '=',
+                    rec.max_qty),
+                (
+                    'delivery_attribute_id',
+                    '=',
+                    rec.delivery_attribute_id.id)])
+            similar_matrix = price_rules.filtered(lambda
+                                                      x: x.price_configurator_id.customer_tag_ids.ids == rec.price_configurator_id.customer_tag_ids.ids)
+            if len(similar_matrix) > 1:
+                raise ValidationError(
+                    _('There is another same rule  in price configuration'))
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        price_matrix = super(PriceMatrix, self).create(vals_list)
+        self._price_matrix_validation()
+        return price_matrix
+
+    def write(self, vals_list):
+        price_matrix = super(PriceMatrix, self).write(vals_list)
+        self._price_matrix_validation()
+        return price_matrix

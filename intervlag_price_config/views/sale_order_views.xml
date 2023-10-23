@@ -5,11 +5,13 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-              <xpath expr="//field[@name='weight']" position="after">
-                <button name="action_update_price_config_price" type="object" class="link link-danger" icon="fa-refresh" string="Update Config Prices" attrs="{'invisible': [('is_updated', '=',True)]}"/>
-                <button name="action_update_price_config_price" type="object" class="link link-success" icon="fa-refresh" string="Update Config Prices" attrs="{'invisible': [('is_updated', '=',False)]}"/>
-                  <field name="is_updated" invisible="1"/>
-               </xpath>
+            <xpath expr="//group[@name='sale_header']" position="after">
+                <div style="margin-left: 68%;">
+                <button id="button_style" name="action_update_price_config_price" type="object" class="btn btn-danger" icon="fa-refresh" string="Update Prices" attrs="{'invisible': [('is_updated', '=',True)]}" />
+                <button id="button_style" name="action_update_price_config_price" type="object" class="btn btn-success" icon="fa-refresh" string="Update Prices" attrs="{'invisible': [('is_updated', '=',False)]}" />
+                <field name="is_updated" invisible="1"/>
+                </div>
+            </xpath>
         </field>
     </record>
 </odoo>
