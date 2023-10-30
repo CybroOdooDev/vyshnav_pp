@@ -3,8 +3,8 @@
     <data noupdate="1">
         <record id="product_attribute_print_type_1" model="product.attribute">
             <field name="name">Print Type</field>
-            <field name="attribute_type">print_attribute</field>
-            <field name="create_variant">no_variant</field>
+<!--            <field name="attribute_type">print_attribute</field>-->
+<!--            <field name="create_variant">no_variant</field>-->
             <field name="sequence">19</field>
         </record>
         <record id="product_attribute_value_screen_print"

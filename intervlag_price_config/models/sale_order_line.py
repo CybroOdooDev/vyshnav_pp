@@ -23,13 +23,11 @@ class SaleOrderLine(models.Model):
                         pc: pc.attribute_id.attribute_type == 'material_attribute' and pc.id
                             in line.product_no_variant_attribute_value_ids.ids
                 ).product_attribute_value_id
-
                 delivery = line.product_no_variant_attribute_value_ids.filtered(
                     lambda
                         pc: pc.attribute_id.attribute_type == 'delivery_attribute' and pc.id in
                             line.product_no_variant_attribute_value_ids.ids
                 ).product_attribute_value_id
-
                 print_type = (
                     line.product_no_variant_attribute_value_ids.filtered(
                         lambda
@@ -52,8 +50,8 @@ class SaleOrderLine(models.Model):
                 quantity = 0
                 order_lines = line.order_id.order_line
                 similar_order_lines = order_lines._origin.filtered(
-                    lambda x: x.product_attributes.get('Design_code') == line.
-                    product_attributes.get('Design_code'))
+                    lambda x: x.design_code_custom_flag.get('Design_code') == line.
+                    design_code_custom_flag.get('Design_code'))
                 print(similar_order_lines, 'similar')
                 if print_type.print_type == 'digital':
                     for qty in similar_order_lines:

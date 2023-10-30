@@ -16,7 +16,7 @@ class HelpdeskTicket(models.Model):
             team_id = self.env['helpdesk.team'].search([], limit=1).id
         return team_id
 
-    name = fields.Char(string="Name", compute="_compute_name")
+    name = fields.Char(string="Name", default="New")
     complaint_department_id = fields.Many2one('complaint.department',
                                               string="Complaint Department")
     complaint_category_ids = fields.Many2many('complaint.category',
@@ -38,9 +38,10 @@ class HelpdeskTicket(models.Model):
     total_order_amount = fields.Monetary(related="sale_order_id.amount_total",
                                          string="Order Amount", store=True)
     ticket_status = fields.Selection(
-        [('valid', 'Valid'), ('invalid', 'Invalid')], string='Status',
+        [('valid', 'Valid'), ('invalid', 'Invalid')],
+        string='Complaint Validation',
         default='valid')
-    desired_solutions= fields.Html(string= "Desired Solutions")
+    desired_solutions = fields.Html(string="Desired Solutions")
 
     @api.onchange('complaint_department_id')
     def complaint_department_id_onchange(self):
@@ -51,10 +52,15 @@ class HelpdeskTicket(models.Model):
                                                        complaint_category_ids.
                                                        ids)]}}
 
-    @api.depends('sale_order_id')
+    @api.depends('sale_order_id', 'name')
     def _compute_name(self):
         for rec in self:
-            rec.name = 'Ticket' + ':' + str(rec.sale_order_id.name)
+            if rec.sale_order_id:
+                rec.name = 'Ticket' + ':' + str(rec.sale_order_id.name)
+            elif rec._origin.id:
+                rec.name = 'Ticket' + ':' + str(rec._origin.id)
+            else:
+                rec.name = 'Ticket' + ':' + "New"
 
     def action_create_sale_order(self):
         """Function to create sale order from ticket and to display created
@@ -103,3 +109,22 @@ class HelpdeskTicket(models.Model):
                                                  minimum_duration, rounding)
             return self._action_open_new_timesheet(minutes_spent * 60 / 3600)
         return False
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        ticket = super(HelpdeskTicket, self).create(vals_list)
+        if ticket.sale_order_id:
+            ticket.name = ticket.sale_order_id.name
+        else:
+            ticket.name = 'Ticket' + '#' + str(ticket.ticket_ref)
+        return ticket
+
+    # def name_get(self):
+    #     result = []
+    #     for ticket in self:
+    #         if ticket.sale_order_id:
+    #             ticket.name = ticket.sale_order_id.name
+    #         else:
+    #             result.append(
+    #                 (ticket.id, "%s (#%s)" % ('Ticket', ticket.ticket_ref)))
+    #     return result

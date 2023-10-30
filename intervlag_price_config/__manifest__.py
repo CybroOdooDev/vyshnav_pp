@@ -16,12 +16,12 @@
     'data': [
         'data/print_type_data.xml',
         'security/ir.model.access.csv',
-        'views/price_configurator_views.xml',
-        'views/product_attribute_views.xml',
-        'views/product_attribute_value_views.xml',
-        'views/product_template_view.xml',
-        'views/sale_order_views.xml',
-        'views/variant_template.xml',
+    #     'views/price_configurator_views.xml',
+    #     'views/product_attribute_views.xml',
+    #     'views/product_attribute_value_views.xml',
+    #     'views/product_template_view.xml',
+    #     'views/sale_order_views.xml',
+    #     'views/variant_template.xml',
     ],
     'assets': {
         'web.assets_backend': [

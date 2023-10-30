@@ -17,8 +17,10 @@
                     context="{'group_by':'complaint_category_ids'}"/>
             <filter string="Complaint Type" name="complaint_type" domain="[]"
                     context="{'group_by':'complaint_type'}"/>
-            <filter string="Validation" name="validation" domain="[]"
+            <filter string="Complaint Validation" name="validation" domain="[]"
                     context="{'group_by':'ticket_status'}"/>
+            <filter string="Description" name="description" domain="[]"
+                    context="{'group_by':'description'}"/>
         </xpath>
     </field>
 </record>
@@ -32,6 +34,7 @@
             <field name="cost_of_restore" type="measure"/>
             <field name="valid_ticket_percentage" type="measure" widget="percentage"/>
             <field name="total_order_amount" type="measure" widget="monetary"/>
+            <field name="average_cost" type="measure" widget="monetary"/>
         </xpath>
     </field>
 </record>

@@ -13,7 +13,8 @@
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': 'https://www.cybrosys.com',
-    'depends': ['helpdesk', 'sale', 'helpdesk_sale', 'helpdesk_sale_timesheet','helpdesk_timesheet','intervlag_branding_tag'],
+    'depends': ['helpdesk', 'sale', 'helpdesk_sale', 'helpdesk_sale_timesheet',
+                'helpdesk_timesheet'],
     'data': [
         'security/ir.model.access.csv',
         'views/complaint_category_views.xml',

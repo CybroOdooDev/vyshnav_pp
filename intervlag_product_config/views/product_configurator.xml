@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="intervlag_product_config_product_quantity_config"
+              inherit_id="sale_product_configurator.product_quantity_config">
+        <xpath expr="//div[hasclass('css_quantity')]" position="attributes">
+            <attribute name="style">display: inline-flex!important;</attribute>
+        </xpath>
+    </template>
+    <template id="intervlag_product_config_product_" inherit_id="sale_product_configurator.configure_optional_products">
+        <xpath expr="//th[hasclass('td-price')]" position="attributes">
+            <attribute name="style">display: none</attribute>
+        </xpath>
+        <xpath expr="//td[hasclass('td-price')]" position="attributes">
+            <attribute name="style">display: none</attribute>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="product_attribute_view_form_size_attribute" model="ir.ui.view">
+        <field name="name">product.attribute.view.form.size.attribute</field>
+        <field name="model">product.attribute</field>
+        <field name="inherit_id" ref="product.product_attribute_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='create_variant']" position="after">
+                <field name="highlight_on_report" widget="boolean_toggle"/>
+            </xpath>
+            <xpath expr="//field[@name='value_ids']/tree" position="inside">
+                <field name="is_custom_size"
+                       groups="product.group_product_variant" colspan="2"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mrp_bom_form_view_inherited_intervlag" model="ir.ui.view">
+        <field name="name">
+            product.attribute.value.form.inherited.intervlag.product.config
+        </field>
+        <field name="model">product.attribute.value</field>
+        <field name="inherit_id"
+               ref="intervlag_sale.product_attribute_value_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='attribute_id']" position="before">
+                <field name="is_custom_size"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

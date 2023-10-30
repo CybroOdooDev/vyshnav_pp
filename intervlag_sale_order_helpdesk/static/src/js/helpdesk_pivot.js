@@ -22,6 +22,14 @@ patch(PivotModel.prototype, "HelpdeskPivot.percentage", {
           return val;
            });
         }
+         else if (measure=="average_cost"){
+          values = originIndexes.map((originIndex) => {
+          var total_tickets=config.data.measurements[key][originIndex]['__count'];
+          var cost_of_restore=config.data.measurements[key][originIndex]['cost_of_restore'];
+          var avg = (cost_of_restore / total_tickets)
+          return avg;
+           });
+        }
         else{
         values = originIndexes.map((originIndex) => {
             return config.data.measurements[key][originIndex][measure];

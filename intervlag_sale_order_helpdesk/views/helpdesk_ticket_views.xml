@@ -11,18 +11,6 @@
                  <button name="action_create_sale_order"
                          string="Create Sale Order" type="object" attrs="{'invisible':['|','|',('ticket_status','!=','valid'),('new_sale_order_id','!=',False),('sale_order_id','=',False)]}"/>
              </xpath>
-            <field name="tag_ids" position="after">
-                <field name="complaint_department_id"/>
-                <field name="complaint_category_ids" widget="many2many_tags"/>
-                <field name="ticket_status"/>
-                <field name="cost_of_restore" widget="monetary"/>
-                <field name="start_date"/>
-                <field name="solved_date"/>
-                <field name="currency_id" invisible="1"/>
-            </field>
-            <field name="team_id" position="after">
-                <field name="complaint_type"/>
-            </field>
             <xpath expr="//sheet/div[hasclass('oe_button_box')]" position="after">
                 <widget name="web_ribbon" title="Invalid"  bg_color="bg-danger" attrs="{'invisible': [('ticket_status', 'in', ['valid', False])]}"/>
                 <widget name="web_ribbon" title="Valid" bg_color="bg-success" attrs="{'invisible': [('ticket_status', 'in', ['invalid',False])]}"/>
@@ -46,16 +34,41 @@
             <xpath expr="//form/sheet/group/group/field[@name='email_cc']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
-            <xpath  expr="//form/sheet/group/group/field[@name='email_cc']" position="after" >
-                <field name ='sale_order_id' string="Sale Order"/>
-                <field name = "new_sale_order_id"/>
+
+            <xpath expr="//form/sheet/group/group/field[@name='email_cc']" position="after">
+                <field name="user_id"/>
+                <field name="priority" widget="priority"/>
+                <field name="start_date"/>
+                <field name="solved_date"/>
+                <field name="currency_id" invisible="1"/>
             </xpath>
-             <xpath expr="//form/sheet/div[hasclass('oe_title')]" position="attributes">
-                <attribute name="invisible">1</attribute>
-             </xpath>
              <xpath expr="//field[@name='team_id']" position="attributes">
                 <attribute name="invisible">1</attribute>
              </xpath>
+            <xpath expr="//field[@name='partner_name']" position="replace">
+             </xpath>
+            <xpath expr="//field[@name='partner_id']" position="replace">
+             </xpath>
+            <xpath expr="//field[@name='tag_ids']" position="replace">
+             </xpath>
+            <xpath expr="//field[@name='ticket_type_id']" position="replace">
+             </xpath>
+            <xpath expr="//field[@name='user_id']" position="replace">
+             </xpath>
+            <xpath expr="//field[@name='priority']" position="replace">
+             </xpath>
+             <xpath expr="//field[@name='team_id']" position="after">
+                 <field name ="partner_id"/>
+                 <field name ='sale_order_id' string="Sale Order"/>
+                <field name ="new_sale_order_id"/>
+             </xpath>
+            <field name="new_sale_order_id" position="after">
+                <field name="complaint_department_id"/>
+                <field name="complaint_category_ids" widget="many2many_tags"/>
+                <field name="complaint_type"/>
+                <field name="ticket_status"/>
+                <field name="cost_of_restore" widget="monetary"/>
+            </field>
         </field>
     </record>
 <record id="helpdesk_ticket_view_form_inherit_helpdesk_sale_timesheet_sale_order_helpdesk" model="ir.ui.view">
@@ -65,6 +78,11 @@
     <field name="arch" type="xml">
        <xpath expr="//field[@name='sale_line_id' and @groups='sales_team.group_sale_salesman']" position="attributes">
     <attribute name="invisible">1</attribute>
+  </xpath>
+        <xpath expr="//field[@name='sale_line_id' and @groups='sales_team.group_sale_salesman']"
+               position="before">
+            <field name="ticket_type_id"/>
+            <field name="tag_ids" widget="many2many_tags"/>
   </xpath>
     </field>
 </record>

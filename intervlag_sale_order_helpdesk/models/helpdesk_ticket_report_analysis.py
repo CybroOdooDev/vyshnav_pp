@@ -26,6 +26,8 @@ class HelpdeskTicketReportAnalysis(models.Model):
     cost_of_restore = fields.Float(string="Cost Of Restore")
     valid_ticket_percentage = fields.Float(string="Valid Ticket percentage")
     total_order_amount = fields.Float(string="Total amount of orders")
+    description = fields.Html(string="Description")
+    average_cost = fields.Float(string="Average Cost Of Restore")
 
     def _select(self):
         """Function used for SELECT query"""
@@ -39,7 +41,11 @@ class HelpdeskTicketReportAnalysis(models.Model):
             "END) )"
             "/ COUNT(T.id) AS valid_ticket_percentage"
         )
+        select_str += (
+            ", T.cost_of_restore/COUNT(T.id) AS average_cost"
+        )
         select_str += ", T.total_order_amount as total_order_amount"
+        select_str += ", T.description as description"
         return select_str
 
     def _group_by(self):
