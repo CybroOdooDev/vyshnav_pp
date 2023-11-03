@@ -8,7 +8,6 @@ class IntervlagProductConfig(http.Controller):
 
     @http.route(['/get_is_customsize'], type="json", auth="public")
     def get_iscustom(self, **post):
-
         # value_id = (post['id']) #if value_id available
         value_name = post.get('name')
         value = request.env['product.template.attribute.value'].sudo(
@@ -16,15 +15,6 @@ class IntervlagProductConfig(http.Controller):
         ).search([('name', '=', value_name)], limit=1)
         is_custom_size = value.is_custom_size
         return is_custom_size
-
-    @http.route(['/product_config/attribute_value_save'], type="json", auth="public")
-    def is_custom_save(self, **post):
-        print(post)
-        # value_id = (post['id']) #if value_id available
-        value_id = post.get('value_id')
-        value = request.env['product.template.attribute.value'].sudo().browse(value_id)
-        print(value)
-        value.is_save = True
 
 
 class NewProductConfiguratorController(ProductConfiguratorController):
@@ -69,4 +59,3 @@ class NewProductConfiguratorController(ProductConfiguratorController):
                 'custom_attribute': kw.get('custom_attribute', False),
                 'partner': partner_id
             })
-

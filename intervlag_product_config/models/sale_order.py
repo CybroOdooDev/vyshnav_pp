@@ -64,7 +64,8 @@ class SalesOrderLine(models.Model):
     _inherit = 'sale.order.line'
 
     product_attributes = fields.Json('Product Attributes', store=True,
-                                     compute='_get_product_attributes')
+                                     compute='_get_product_attributes',
+                                     translate=False)
     design_code_custom_flag = fields.Json('Design code & Custom flag',
                                           store=True)
 

@@ -3,7 +3,6 @@ odoo.define('intervlag_product_config.configure', function (require) {
 
     var core = require('web.core');
     var VariantMixin = require('sale.VariantMixin');
-    var ajax = require("web.ajax");
 
 
     VariantMixin.getCustomVariantValues = ($target) =>{
@@ -17,7 +16,7 @@ odoo.define('intervlag_product_config.configure', function (require) {
             var length = $closestLength.val();
             var width = $closestWidth.val();
             if(length && width){
-            $variantCustomValueInput.val(`Custom Size : ${length} x ${width}`);}
+            $variantCustomValueInput.val(`Custom Size : ${length}x${width}`);}
             if ($variantCustomValueInput.length !== 0){
                 variantCustomValues.push({
                     'custom_product_template_attribute_value_id': $variantCustomValueInput.data('custom_product_template_attribute_value_id'),
@@ -94,7 +93,7 @@ odoo.define('intervlag_product_config.configure', function (require) {
                                     'data-custom_product_template_attribute_value_id': attributeValueId,
                                     'data-attribute_value_name': attributeValueName,
                                     class: 'variant_custom_value_length form-control mt-4',
-                                    style: 'max-width: 83%'
+                                    style: 'max-width: 83% ; border-radius:4px;'
                                 });
                                 $input_length.attr('placeholder', attributeValueName +" : Length");
                                 $variantContainer.append($input_length);

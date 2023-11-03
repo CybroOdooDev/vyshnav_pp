@@ -1,32 +1,58 @@
-odoo.define('intervlag_product_config.product_configurator', function (require) {
-    "use strict";
-    var ajax = require('web.ajax');
+/** @odoo-module */
 
-    const {OptionalProductsModal} = require('@sale_product_configurator/js/product_configurator_modal');
-    OptionalProductsModal.include({
-        start: function () {
-            var def = this._super.apply(this, arguments);
-            var self = this;
-            this.$el.find('select').select2({
-                closeOnSelect: false
-            })
-            this.$el.find('ul').css("border", "none");
-            this.$el.find('input[name="add_qty"]').val(this.rootProduct.quantity);
-            // set a unique id to each row for options hierarchy
-            var $products = this.$el.find('tr.js_product');
-            _.each($products, function (el) {
-                var $el = $(el);
-                var uniqueId = self._getUniqueId(el);
+import {patch} from "@web/core/utils/patch";
+const rpc = require('web.rpc');
+var ajax = require('web.ajax');
+import { OptionalProductsModal } from "@sale_product_configurator/js/product_configurator_modal";
 
-                var productId = parseInt($el.find('input.product_id').val(), 10);
-                if (productId === self.rootProduct.product_id) {
-                    self.rootProduct.unique_id = uniqueId;
-                } else {
-                    el.dataset.parentUniqueId = self.rootProduct.unique_id;
-                }
-            });
+patch(OptionalProductsModal.prototype, 'MultipleDesign', {
+
+    start: function () {
+
+        var def = this._super.apply(this, arguments);
+        var self = this;
+        this.$el.find('select').select2({
+            closeOnSelect: false
+        })
+        this.$el.find('ul').css("border", "none");
+        this.$el.find('input[name="add_qty"]').val(this.rootProduct.quantity);
+        // set a unique id to each row for options hierarchy
+        var $products = this.$el.find('tr.js_product');
+        _.each($products, function (el) {
+            var $el = $(el);
+            var uniqueId = self._getUniqueId(el);
+
+            var productId = parseInt($el.find('input.product_id').val(), 10);
+            if (productId === self.rootProduct.product_id) {
+                self.rootProduct.unique_id = uniqueId;
+            } else {
+                el.dataset.parentUniqueId = self.rootProduct.unique_id;
+            }
+        });
 
             return def.then(function () {
+                var product_template_attribute_id = self.rootProduct["variant_values"];
+                var product_tmpl_id = self.rootProduct["product_template_id"];
+                ajax
+                  .rpc("/product_config/attribute_value_constrains", {
+                    product_template_attribute_id: product_template_attribute_id,
+                    product_tmpl_id: product_tmpl_id,
+                  })
+                  .then(function (data) {
+                    if (data) {
+                      for (var i = 0; i < data["excluded_values"].length; i++) {
+                        var value_id = data["excluded_values"][i];
+                        var values_data = self.$el.find(
+                          "[data-value_id = " + value_id + "]"
+                        )[0];
+                        if (values_data) {
+                          $(values_data).attr("checked", false)
+                          $(values_data.parentElement).addClass("attribute_hidden");
+                        }
+                      }
+                    }
+                  });
+
                 // This has to be triggered to compute the "out of stock" feature
                 self._opened.then(function () {
                     self.triggerVariantChange(self.$el);
@@ -67,9 +93,62 @@ odoo.define('intervlag_product_config.product_configurator', function (require) 
                     self.$el.closest('.modal-content').css('min-height', self.previousModalHeight + 'px');
                 }
             });
-
         },
 
+
+    _onConfirmButtonClick: function () {
+    var self = this;
+    var required_fields = self.$modal.find('.is_required_attribute');
+    var allFilled = true;
+
+    required_fields.each(function (i, obj) {
+        var content = obj.textContent.trim();
+        if (content === "No matches found" || content === "") {
+            $(obj).css('border-color', 'red'); // Set border color to red for validation error
+            allFilled = false;
+        } else {
+            $(obj).css('border-color', ''); // Reset border color if no validation error
+        }
+    });
+
+    if (allFilled) {
+        this.trigger('confirm');
+        this.close();
+        var RequiredDiv =$(".attribute_required")
+        console.log('$errorDiv',RequiredDiv)
+        if (RequiredDiv) {
+        RequiredDiv.remove(); // Remove the error message when canceling the product configurator popup
+    }
+    } else {
+        var errorMessage = 'Please fill all required fields before confirming.';
+        var $errorDiv = $('<div class="attribute_required" style="position:' +
+            ' fixed;' +
+            ' top:' +
+            ' 70px; right:' +
+            ' 50px; z-index: 9999; width: 300px; background-color: #f8d7da; color: #721c24; padding: 15px; border: 1px solid #f5c6cb; border-radius: 5px; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);">' + errorMessage + '<span style="position: absolute; top: 10px; right: 10px; color: #721c24; cursor: pointer; font-weight: bold;">&times;</span></div>');
+        $errorDiv.find('span').hover(
+            function() {
+                $(this).css('color', '#f00');
+            },
+            function() {
+                $(this).css('color', '#721c24');
+            }
+        );
+        $errorDiv.find('span').click(function() {
+            $errorDiv.remove(); // Make the error message closable
+        });
+        $('body').append($errorDiv);
+    }
+},
+    _onCancelButtonClick: function () {
+        this.trigger('back');
+        this.close();
+        var RequiredDiv =$(".attribute_required")
+        console.log('$errorDiv',RequiredDiv)
+        if (RequiredDiv) {
+        RequiredDiv.remove(); // Remove the error message when canceling the product configurator popup
+    }
+    },
 
         getAndCreateSelectedProducts: async function () {
             var self = this;
@@ -98,6 +177,10 @@ odoo.define('intervlag_product_config.product_configurator', function (require) 
                 noVariantAttributeValues = $item.find('.no-attribute-info').data("attribute-value") || self.getNoVariantAttributeValues($item);
                 designCount = self.$modal.find('.custom-no-of-design').val() || 1;
                 quant = self.$modal.find('.js_quantity').val() || 1;
+
+
+
+
                 // Iterate through noVariantAttributeValues to count repetitions
                 for (const attributeValue of noVariantAttributeValues) {
                     var attributeKey = attributeValue.attribute_name;
@@ -116,18 +199,27 @@ odoo.define('intervlag_product_config.product_configurator', function (require) 
                 var fullAttribute = []
 
                 var combineVariants = false;
-
+                console.log(noVariantAttributeValues,'1kg..........')
                 for (const attributeValue of noVariantAttributeValues) {
                     var attributeKey = attributeValue.attribute_name;
-
                     // Check if the attribute occurs only once (not repeating)
                     if (attributeCountMap[attributeKey] === 1) {
-                        fullAttribute.push(attributeValue)
+                        console.warn('not entering')
+                        fullAttribute.push(attributeValue);
                         combineVariants = true;
 
+                        for (var i = 0; i < $('.attribute_hidden').length; i++) {
+                            if ($('.attribute_hidden')[i].children[0].value === attributeValue.value) {
+                                // If condition satisfies, remove attributeValue from fullAttribute
+                                const indexToRemove = fullAttribute.findIndex(item => item.value === attributeValue.value);
+                                if (indexToRemove !== -1) {
+                                    fullAttribute.splice(indexToRemove, 1);
+                                }
+                            }
+                        }
                     }
                 }
-
+                 console.warn("techno......",combineVariants)
                    if (combineVariants) {
                     let qty = (designCount > 1) ? 0 : 1;
                     function getRandomInt(max) {
@@ -153,11 +245,11 @@ odoo.define('intervlag_product_config.product_configurator', function (require) 
                         'no_variant_attribute_values': fullAttribute, // Use the current attribute value in the array
                     };
                     products.push(newProduct);
-            }
-
                 }
 
             }
+
+        }
 
             for (const attributeValue of noVariantAttributeValues) {
                 var attributeKey = attributeValue.attribute_name;
@@ -178,5 +270,5 @@ odoo.define('intervlag_product_config.product_configurator', function (require) 
             return products;
         },
 
-    });
+
 });
