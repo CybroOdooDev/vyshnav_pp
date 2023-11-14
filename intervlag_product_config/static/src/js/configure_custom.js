@@ -31,6 +31,7 @@ odoo.define('intervlag_product_config.configure', function (require) {
     }
 
     VariantMixin.handleCustomValues = ($target) => {
+
         var $variantContainer;
         var $customInput = false;
 
@@ -46,6 +47,7 @@ odoo.define('intervlag_product_config.configure', function (require) {
         }
 
         if ($variantContainer) {
+
             var isCustom = $customInput && $customInput.data('is_custom') === 'True';
             var attributeValueName = $customInput.data('value_name');
             var attributeValueId = $customInput.data('value_id');
@@ -82,11 +84,9 @@ odoo.define('intervlag_product_config.configure', function (require) {
                                 class: 'variant_custom_value form-control mt-2',
                                 style: 'display: none;'
                             });
-
                             $input.attr('placeholder', attributeValueName +" : Custom");
                             $input.addClass('custom_value_radio');
                             $variantContainer.append($input);
-
 
                             var $input_length = $('<input>', {
                                     type: 'number',
@@ -102,13 +102,12 @@ odoo.define('intervlag_product_config.configure', function (require) {
                                     'data-custom_product_template_attribute_value_id': attributeValueId,
                                     'data-attribute_value_name': attributeValueName,
                                     class: 'variant_custom_value_width form-control mt-4',
-                                    style: 'max-width: 83%'
+                                    style: 'max-width: 83% ; border-radius:4px;'
                                 });
                                 $input_width.attr('placeholder', attributeValueName +" : Width");
                                 $variantContainer.append($input_width);
                                 $(".variant_custom_value").val($('.variant_custom_value_length').val());
-
-                             var $label = $('<label>', {
+                                    var $label = $('<label>', {
                                     for: 'saveCheckbox',
                                     text: 'Save this?',
                                     class: 'label_for_checkbox mt-2',
@@ -131,7 +130,7 @@ odoo.define('intervlag_product_config.configure', function (require) {
                                 }
                             });
                             }
-                           else{
+                            else{
                             $variantContainer.find('.variant_custom_value_width').remove();
                             $variantContainer.find('.variant_custom_value_length').remove();
                             $variantContainer.find('.variant_custom_value_checkbox').remove();

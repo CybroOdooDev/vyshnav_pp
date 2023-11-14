@@ -9,7 +9,8 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     def action_confirm(self):
-        """Warning to check if the qty of configured product is zero. And also to create new attribute custom value"""
+        """Warning to check if the qty of configured product is zero. And
+        also to create new attribute custom value"""
         res = super(SaleOrder, self).action_confirm()
         self.ensure_one()
         list_product = list(self.order_line.mapped('product_template_id'))
@@ -22,11 +23,11 @@ class SaleOrder(models.Model):
         if zero_qty_products:
             raise MissingError(
                 _('Configured product(s) %s with zero quantity cannot be '
-                  'sold, please add the qunatity and proceed. ',
+                  'sold, please add the quantity to proceed. ',
                   (", ".join(zero_qty_products))))
 
         for rec in self.order_line:
-            if rec.design_code_custom_flag.get('is_to_save') == "True":
+            if rec.product_no_variant_attribute_value_ids and rec.design_code_custom_flag.get('is_to_save') == "True":
                 for item in rec.product_no_variant_attribute_value_ids._origin:
                     if item.is_custom_size:
                         customs = rec.product_custom_attribute_value_ids
@@ -35,19 +36,29 @@ class SaleOrder(models.Model):
                             if record.custom_product_template_attribute_value_id.is_custom_size:
                                 custom = record.custom_value
                                 if custom:
-                                    size_string = custom.replace("Custom ", "")
+                                    size_string = custom.replace("Custom Size :",
+                                                                 "")
+                                    length, width = map(int, size_string.split('x'))
                                     find_attr = self.env[
                                         'product.attribute.value'].search(
                                         [('name', '=', size_string)])
-                                    if not find_attr:
+                                    if find_attr:
+
+                                        find_attr.write(
+                                            {'partner_ids': [
+                                                (4, self.partner_id.id)]})
+                                    else:
                                         if attr.display_type != 'color':
                                             new_attr_value = self.env[
-                                                'product.attribute.value'].create(
-                                                {
-                                                    'name': size_string,
-                                                    'attribute_id': attr.id,
-                                                    'partner_id': self.partner_id.id
-                                                })
+                                                'product.attribute.value'].create({
+                                                'name': size_string,
+                                                'length': length,
+                                                'width': width,
+                                                'attribute_id': attr.id,
+                                                'partner_ids': [
+                                                    (4, self.partner_id.id)]
+
+                                            })
                                             attribute_line = self.env[
                                                 'product.template.attribute.line'].sudo().search(
                                                 [('attribute_id', '=',
@@ -73,6 +84,7 @@ class SalesOrderLine(models.Model):
     def _get_product_attributes(self):
         """Function modifies and assigns value to Json fields
         product_attributes will be used later for many purposes."""
+
         for rec in self:
             if not rec.product_custom_attribute_value_ids and not rec.product_no_variant_attribute_value_ids:
                 return ""
@@ -103,42 +115,5 @@ class SalesOrderLine(models.Model):
 
                             if partner_id:
                                 rec.product_custom_attribute_value_ids.partner_id = partner_id.id
-            rec.product_attributes = attributes
 
-    # @api.model_create_multi
-    # def create(self, vals_list):
-    #     order_line = super(SalesOrderLine, self).create(vals_list)
-    #     for rec in order_line:
-    #         if not rec.product_custom_attribute_value_ids and not rec.product_no_variant_attribute_value_ids:
-    #             return ""
-    #         attributes = {}
-    #         if rec.product_attributes:
-    #             attributes = rec.product_attributes
-    #         partner_id = self.order_id.partner_id
-    #         customs = rec.product_custom_attribute_value_ids
-    #
-    #         for item in rec.product_no_variant_attribute_value_ids._origin:
-    #             attributes.update({
-    #                 item.attribute_id.name: item.name})
-    #         for record in customs:
-    #             custom = record.custom_value
-    #             if custom:
-    #                 attributes.update({
-    #                     record.custom_product_template_attribute_value_id.name: custom})
-    #
-    #                 if 'x' in custom and 'Custom Size :' in custom:
-    #                     numbers = re.findall(r'\d+\.\d+|\d+', custom)
-    #                     numbers = [int(x) if x.isdigit() else float(x)
-    #                                for x
-    #                                in
-    #                                numbers]
-    #
-    #                     if len(numbers) == 2:
-    #                         record.length_custom = numbers[0]
-    #                         record.width_custom = numbers[1]
-    #
-    #                         if partner_id:
-    #                             rec.product_custom_attribute_value_ids.partner_id = partner_id.id
-    #         rec.product_attributes = attributes
-    #
-    #     return order_line
+            rec.product_attributes = attributes

@@ -59,3 +59,4 @@ class NewProductConfiguratorController(ProductConfiguratorController):
                 'custom_attribute': kw.get('custom_attribute', False),
                 'partner': partner_id
             })
+

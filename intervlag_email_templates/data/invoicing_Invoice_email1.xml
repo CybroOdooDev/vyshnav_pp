@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="account.email_template_edi_invoice" model="mail.template">
+      <field name="name">Invoicing: Invoice email</field>
+      <field name="subject">Invoice email</field>
+      <field name="body_html" type="html">
+        <p style="margin-bottom: 0px">
+          <style>
+            @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@900&amp;display=swap");
+          </style>
+        </p>
+        <div
+          style="
+            padding: 0px;
+            width: 600px;
+            margin: auto;
+            background: #ffffff repeat top / 100%;
+            color: #777777;
+          "
+        >
+          <table
+            cellspacing="0"
+            cellpadding="0"
+            align="center"
+            border="0"
+            width="100%"
+            style="max-width: 600px; margin: 0 auto"
+          >
+            <tbody>
+              <tr>
+                <td valign="center" width="200" style="font-size: 12px">
+                  <t t-if="object.partner_id.lang != 'nl_NL'">
+                    <img
+                      src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/3a194bcf-d3b1-45af-a9d5-91a06f109982.png"
+                      class="mcnRetinaImage"
+                      style="
+                        border-width: 0px;
+                        height: auto;
+                        outline: none;
+                        vertical-align: bottom;
+                        max-width: 600px;
+                        padding-bottom: 0px;
+                        display: inline !important;
+                        width: auto;
+                      "
+                      align="middle"
+                    />
+                  </t>
+                  <t t-else="">
+                    <img
+                      src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/72205120-7b22-4410-97fb-43e4149c0183.png"
+                      class="mcnRetinaImage"
+                      style="
+                        border-width: 0px;
+                        height: auto;
+                        outline: none;
+                        vertical-align: bottom;
+                        max-width: 600px;
+                        padding-bottom: 0px;
+                        display: inline !important;
+                        width: auto;
+                      "
+                      align="middle"
+                    />
+                  </t>
+                </td>
+              </tr>
+
+              <tr>
+                <td
+                  align="center"
+                  style="
+                    background-color: rgb(10, 123, 117);
+                    padding-top: 50px;
+                    padding-bottom: 50px;
+                  "
+                >
+                  <div>
+                    <h3
+                      style="
+                        font-family: 'Raleway', sans-serif;
+                        font-weight: 900;
+                        font-size: 24px;
+                        color: #fff;
+                        margin: 0px;
+                        text-transform: uppercase;
+                      "
+                    >
+                      HERE’S YOUR INVOICE
+                    </h3>
+                    <div
+                      style="
+                        color: rgb(255, 255, 255);
+                        font-family: Helvetica;
+                        font-size: 13px;
+                        line-height: 19.5px;
+                        padding-right: 18px;
+                        padding-bottom: 9px;
+                        padding-left: 18px;
+                        padding-top: 40px;
+                      "
+                    >
+                      <p>Your invoice is ready for payment.</p>
+                      <p>
+                        Please see attached invoice number
+                        <t t-out="object.name" /> from
+                        <t t-out="object.invoice_origin" />.
+                      </p>
+                      <a href="#" style="display: block; padding-top: 45px">
+                        <img
+                          align="center"
+                          src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/11dd36a3-f9cc-4a65-b632-aff5e1c1753c.gif"
+                          class="mcnRetinaImage"
+                          style="
+                            border-width: 0px;
+                            height: auto;
+                            outline: none;
+                            vertical-align: bottom;
+                            max-width: 264px;
+                            padding-bottom: 0px;
+                            display: inline !important;
+                            width: auto;
+                          "
+                        />
+                      </a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td
+                  align="center"
+                  style="
+                    background-color: rgb(0, 154, 147);
+                    padding-top: 50px;
+                    padding-bottom: 45px;
+                  "
+                >
+                  <h3
+                    style="
+                      font-family: 'Raleway', sans-serif;
+                      font-weight: 900;
+                      font-size: 24px;
+                      color: #fff;
+                      text-transform: uppercase;
+                    "
+                  >
+                    ANY QUESTIONS?
+                  </h3>
+                  <div
+                    style="
+                      padding-top: 40px;
+                      color: #fff;
+                      font-size: 13px;
+                      font-family: Helvetica;
+                    "
+                  >
+                    <p>
+                      If you have any questions, don't hesitate to contact us.
+                    </p>
+                    <br />
+                    <p>Thanks for choosing Intervlag!</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table cellspacing="0" cellpadding="0" width="100%">
+            <tbody>
+              <tr
+                style="
+                  background-color: #000000;
+                  padding-top: 25px;
+                  padding-bottom: 25px;
+                  color: #ffffff;
+                  font-family: Helvetica;
+                  font-size: 12px;
+                  line-height: 150%;
+                  text-align: center;
+                  font-weight: normal;
+                "
+              >
+                <td
+                  class="mcnTextContent"
+                  style="
+                    text-align: left;
+                    padding-left: 20px;
+                    padding-top: 25px;
+                    padding-bottom: 25px;
+                  "
+                  valign="top"
+                >
+                  <t t-if="object.partner_id.lang != 'nl_NL'">
+                    <img
+                      data-file-id="2126449"
+                      height="63"
+                      src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/9830b47b-2880-4efc-af54-7f725f3f6fe5.png"
+                      style="
+                        border: 0px initial;
+                        width: 108px;
+                        height: 63px;
+                        margin: 0px;
+                      "
+                      width="108"
+                    /><br />
+                    <br />
+                    <img
+                      data-file-id="2154085"
+                      height="34"
+                      src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/878e68ac-df48-431d-95cc-e8f1b8222a46.png"
+                      style="
+                        border: 0px;
+                        width: 264px;
+                        height: 34px;
+                        margin: 0px;
+                      "
+                      width="264"
+                    />
+                  </t>
+                  <t t-else="">
+                    <img
+                      data-file-id="2126449"
+                      height="63"
+                      src="https://gallery.mailchimp.com/586e1f749e29757e8c406d0c4/images/b695d881-ce04-49c8-8520-90453dbb5402.png"
+                      style="
+                        border: 0px initial;
+                        width: 108px;
+                        height: 63px;
+                        margin: 0px;
+                      "
+                      width="108"
+                    /><br />
+                    <br />
+                    <img
+                      data-file-id="2154085"
+                      height="34"
+                      src="https://gallery.mailchimp.com/586e1f749e29757e8c406d0c4/images/f20f334e-8abf-467d-adbd-48cadc26c7c0.png"
+                      style="
+                        border: 0px;
+                        width: 264px;
+                        height: 34px;
+                        margin: 0px;
+                      "
+                      width="264"
+                    />
+                  </t>
+                </td>
+                <td
+                  class="mcnTextContent"
+                  style="
+                    width: 40%;
+                    font-size: 12px;
+                    padding-top: 25px;
+                    padding-bottom: 25px;
+                    color: white;
+                    text-align: left;
+                  "
+                  valign="top"
+                >
+                  Intervlag<br />
+                  Tempelhof 1<br />
+                  3045 PV Rotterdam<br />
+                  Nederland<br />
+                  <br />
+                  <a
+                    href="callto:+31 (0)10 785 67 66"
+                    target="_blank"
+                    style="text-decoration: none; color: white"
+                    >+31 (0)10 785 67 66</a
+                  ><br />
+                  <a
+                    style="text-decoration: underline; color: white"
+                    href="mailto:info@intervlag.nl"
+                    target="_blank"
+                    >info@intervlag.nl</a
+                  ><br />
+                  <a
+                    style="text-decoration: underline; color: white"
+                    href="http://www.intervlag.nl"
+                    target="_blank"
+                    >www.intervlag.nl</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </field>
+    </record>
+  </data>
+</odoo>

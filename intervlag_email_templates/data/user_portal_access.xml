@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record
+      id="portal.mail_template_data_portal_welcome"
+      model="mail.template">
+      <field name="name">User: Portal Acess</field>
+      <field name="subject">YOU NOW HAVE ACCESS!</field>
+      <field name="body_html" type="html">
+        <p style="margin-bottom: 0px">
+            <p style="box-sizing: border-box; margin-bottom: 0px">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@900&amp;amp;display=swap");
+  </style>
+</p>
+<div
+  style="
+    font-size: 13px;
+    font-family: 'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;
+    padding: 0px;
+    width: 600px;
+    margin: auto;
+    background: #ffffff repeat top / 100%;
+    color: #777777;
+  "
+>
+  <table
+    style="
+      box-sizing: border-box;
+      border-collapse: collapse;
+      max-width: 600px;
+      margin: 0 auto;
+    "
+    width="100%"
+    cellspacing="0"
+    cellpadding="0"
+    border="0"
+    align="center"
+  >
+    <tbody>
+      <tr>
+        <td style="font-size: 12px" width="200" valign="center">
+          <t t-if="object.partner_id.lang != 'nl_NL'">
+            <img
+              src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/3a194bcf-d3b1-45af-a9d5-91a06f109982.png"
+              class="mcnRetinaImage"
+              style="
+                box-sizing: border-box;
+                outline-width: initial;
+                outline-style: none;
+                outline-color: initial;
+                border-left-width: 0px;
+                border-bottom-width: 0px;
+                border-right-width: 0px;
+                border-top-width: 0px;
+                border-style: none;
+                border-width: 0px;
+                height: 116px;
+                outline: none;
+                vertical-align: bottom;
+                max-width: 600px;
+                padding-bottom: 0px;
+                width: 600px;
+                display: inline;
+              "
+              width="600px"
+              height="116"
+              align="middle"
+            />
+          </t>
+          <t t-else="">
+            <img
+              src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/72205120-7b22-4410-97fb-43e4149c0183.png"
+              class="mcnRetinaImage"
+              style="
+                box-sizing: border-box;
+                outline-width: initial;
+                outline-style: none;
+                outline-color: initial;
+                border-left-width: 0px;
+                border-bottom-width: 0px;
+                border-right-width: 0px;
+                border-top-width: 0px;
+                border-style: none;
+                border-width: 0px;
+                height: 116px;
+                outline: none;
+                vertical-align: bottom;
+                max-width: 600px;
+                padding-bottom: 0px;
+                width: 600px;
+                display: inline;
+              "
+              width="600px"
+              height="116"
+              align="middle"
+            />
+          </t>
+        </td>
+      </tr>
+
+      <tr>
+        <td
+          style="
+            background-color: #009a93;
+            padding-top: 40px;
+            padding-bottom: 50px;
+          "
+          align="center"
+        >
+          <a
+            href="#"
+            style="
+              box-sizing: border-box;
+              background-color: transparent;
+              color: #008784;
+              text-decoration-thickness: auto;
+              display: block;
+              padding: 9px;
+            "
+          >
+            <img
+              src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/44ae9062-16e7-4249-b985-34408e2ce8d8.png"
+              class="mcnRetinaImage"
+              style="
+                box-sizing: border-box;
+                outline-width: initial;
+                outline-style: none;
+                outline-color: initial;
+                border-left-width: 0px;
+                border-bottom-width: 0px;
+                border-right-width: 0px;
+                border-top-width: 0px;
+                border-style: none;
+                border-width: 0px;
+                height: 263px;
+                outline: none;
+                vertical-align: bottom;
+                max-width: 263px;
+                padding-bottom: 0px;
+                width: 263px;
+                display: inline;
+              "
+              width="263px"
+              height="263"
+              align="middle"
+            />
+          </a>
+
+          <div
+            style="
+              font-size: 13px;
+              font-family: 'Lucida Grande', Helvetica, Verdana, Arial,
+                sans-serif;
+              padding-top: 20px;
+            "
+          >
+            <h3
+              style="
+                box-sizing: border-box;
+                line-height: 1.2;
+                font-family: 'Raleway', sans-serif;
+                font-weight: 900;
+                font-size: 24px;
+                color: #fff;
+                margin: 21px 0px;
+                text-transform: uppercase;
+              "
+            >
+              YOU NOW HAVE ACCESS!
+            </h3>
+            <p
+              style="
+                box-sizing: border-box;
+                margin: 0px;
+                font-size: 13px;
+                font-family: 'Lucida Grande', Helvetica, Verdana, Arial,
+                  sans-serif;
+                color: #fff;
+              "
+            >
+              Dear <t t-out="object.name"></t>,
+            </p>
+            <div
+              style="
+                color: #ffffff;
+                font-family: Helvetica;
+                font-size: 13px;
+                line-height: 19.5px;
+                padding-right: 18px;
+                padding-bottom: 9px;
+                padding-left: 18px;
+                padding-top: 20px;
+              "
+            >
+              <p
+                style="
+                  box-sizing: border-box;
+                  margin: 0px;
+                  font-size: 13px;
+                  font-family: 'Lucida Grande', Helvetica, Verdana, Arial,
+                    sans-serif;
+                "
+              >
+                We have given you access to our portal.Via this portal you can
+                place orders, make quotations, track shipments and check all
+                your invoices.
+              </p>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="
+            font-family: Helvetica;
+            padding-top: 50px;
+            padding-bottom: 45px;
+          "
+          align="center"
+        >
+          <p
+            style="
+              box-sizing: border-box;
+              margin: 0px;
+              font-family: raleway, 'helvetica neue', helvetica, arial,
+                sans-serif;
+              font-size: 24px;
+            "
+          >
+            LOGIN
+          </p>
+          <div
+            style="
+              font-size: 13px;
+              font-family: 'Lucida Grande', Helvetica, Verdana, Arial,
+                sans-serif;
+              padding: 12px 0px 19px;
+            "
+          >
+            <strong
+              style="
+                box-sizing: border-box;
+                font-weight: bolder;
+                color: #666666;
+                font-family: Helvetica;
+                font-size: 13px;
+                line-height: 19.5px;
+                text-align: left;
+              "
+              >User name:</strong
+            >
+            <p
+              style="
+                box-sizing: border-box;
+                margin: 0px;
+                font-size: 13px;
+                font-family: 'Lucida Grande', Helvetica, Verdana, Arial,
+                  sans-serif;
+              "
+            >
+              <t t-out="object.login"></t>
+            </p>
+          </div>
+
+          <strong
+            style="
+              box-sizing: border-box;
+              font-weight: bolder;
+              color: #666666;
+              font-family: Helvetica;
+              font-size: 13px;
+              line-height: 19.5px;
+              text-align: left;
+            "
+            >Password:</strong
+          >
+          <a
+            target="_blank"
+            style="
+              box-sizing: border-box;
+              background-color: transparent;
+              color: #008784;
+              text-decoration-thickness: auto;
+              text-size-adjust: 100%;
+              display: block;
+              font-weight: bold;
+              line-height: 12px;
+              text-align: center;
+              width: 100%;
+            "
+            data-original-title="CREATE PASSWORD"
+            t-attf-href="{{ object.signup_url }}"
+            width="100%"
+            ><span
+              style="
+                color: #ffffff;
+                text-size-adjust: 100%;
+                display: inline-block;
+                font-weight: bold;
+                line-height: 12px;
+                text-align: center;
+                border-radius: 50px;
+                background-color: #e30613;
+                font-family: Arial;
+                font-size: 12px;
+                padding: 10px;
+                text-decoration: none;
+                margin-bottom: 18px;
+                margin-top: 9px;
+              "
+              >CREATE PASSWORD</span
+            ></a
+          >
+        </td>
+      </tr>
+      <tr>
+        <td style="background-color: #f9b000; padding: 40px 0px" align="center">
+          <t t-if="object.partner_id.lang != 'nl_NL'">
+            <div
+              style="
+                font-size: 13px;
+                font-family: 'Lucida Grande', Helvetica, Verdana, Arial,
+                  sans-serif;
+              "
+            >
+              <p
+                style="
+                  box-sizing: border-box;
+                  margin: 0px;
+                  color: #fff;
+                  padding: 9px 18px;
+                  text-size-adjust: 100%;
+                  word-break: break-word;
+                  font-family: Helvetica;
+                  font-size: 13px;
+                  line-height: 19.5px;
+                  text-align: center;
+                "
+              >
+                The portal is easily accessible via www.interflag.com<br />
+                At the top right, click on 'Login'
+              </p>
+              <a
+                title="WWW.INTERFLAG.COM"
+                href="https://www.interflag.com/"
+                target="_blank"
+                style="
+                  box-sizing: border-box;
+                  background-color: transparent;
+                  text-decoration-thickness: auto;
+                  color: #008784;
+                  text-size-adjust: 100%;
+                  display: block;
+                "
+                ><span
+                  style="
+                    text-size-adjust: 100%;
+                    display: inline-block;
+                    font-weight: bold;
+                    line-height: 12px;
+                    text-align: center;
+                    color: #ffffff;
+                    border-radius: 50px;
+                    background-color: #e30613;
+                    font-family: Arial;
+                    font-size: 12px;
+                    padding: 10px;
+                    line-height: 12px;
+                    text-decoration: none;
+                    margin-bottom: 18px;
+                  "
+                  >WWW.INTERFLAG.COM</span
+                ></a
+              >
+              <p
+                style="
+                  box-sizing: border-box;
+                  margin: 0px;
+                  color: #fff;
+                  text-size-adjust: 100%;
+                  word-break: break-word;
+                  font-family: Helvetica;
+                  font-size: 13px;
+                  line-height: 19.5px;
+                  padding: 9px 18px;
+                  text-align: center;
+                "
+              >
+                The portal is easily accessible via www.interflag.com<br />
+                At the top right, click on 'Login'
+              </p>
+            </div>
+          </t>
+          <t t-else="">
+            <div
+              style="
+                font-size: 13px;
+                font-family: 'Lucida Grande', Helvetica, Verdana, Arial,
+                  sans-serif;
+              "
+            >
+              <p
+                style="
+                  box-sizing: border-box;
+                  margin: 0px;
+                  color: #fff;
+                  padding: 9px 18px;
+                  text-size-adjust: 100%;
+                  word-break: break-word;
+                  font-family: Helvetica;
+                  font-size: 13px;
+                  line-height: 19.5px;
+                  text-align: center;
+                "
+              >
+                The portal is easily accessible via www.intervlag.nl<br />
+                At the top right, click on 'Login'
+              </p>
+              <a
+                title="WWW.INTERVLAG.NL"
+                href="https://www.intervlag.nl/"
+                target="_blank"
+                style="
+                  box-sizing: border-box;
+                  background-color: transparent;
+                  text-decoration-thickness: auto;
+                  color: #008784;
+                  text-size-adjust: 100%;
+                  display: block;
+                "
+                ><span
+                  style="
+                    text-size-adjust: 100%;
+                    display: inline-block;
+                    font-weight: bold;
+                    line-height: 12px;
+                    text-align: center;
+                    color: #ffffff;
+                    border-radius: 50px;
+                    background-color: #e30613;
+                    font-family: Arial;
+                    font-size: 12px;
+                    padding: 10px;
+                    line-height: 12px;
+                    text-decoration: none;
+                    margin-bottom: 18px;
+                  "
+                  >WWW.INTERVLAG.NL</span
+                ></a
+              >
+              <p
+                style="
+                  box-sizing: border-box;
+                  margin: 0px;
+                  color: #fff;
+                  text-size-adjust: 100%;
+                  word-break: break-word;
+                  font-family: Helvetica;
+                  font-size: 13px;
+                  line-height: 19.5px;
+                  padding: 9px 18px;
+                  text-align: center;
+                "
+              >
+                The portal is easily accessible via www.intervlag.nl<br />
+                At the top right, click on 'Login'
+              </p>
+            </div>
+          </t>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table
+    style="box-sizing: border-box; border-collapse: collapse"
+    width="100%"
+    cellspacing="0"
+    cellpadding="0"
+  >
+    <tbody>
+      <tr
+        style="
+          background-color: #000000;
+          padding-top: 25px;
+          padding-bottom: 25px;
+          color: #ffffff;
+          font-family: Helvetica;
+          font-size: 12px;
+          line-height: 150%;
+          text-align: center;
+          font-weight: normal;
+        "
+      >
+        <td
+          class="mcnTextContent"
+          style="
+            text-align: left;
+            padding-left: 20px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+          "
+          valign="top"
+        >
+          <t t-if="object.partner_id.lang != 'nl_NL'">
+            <img
+              data-file-id="2126449"
+              src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/9830b47b-2880-4efc-af54-7f725f3f6fe5.png"
+              style="
+                box-sizing: border-box;
+                border-style: none;
+                vertical-align: middle;
+                border: 0px initial;
+                width: 108px;
+                height: 63px;
+                margin: 0px;
+              "
+              width="108px"
+              height="63"
+            /><br />
+            <br />
+            <img
+              data-file-id="2154085"
+              src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/878e68ac-df48-431d-95cc-e8f1b8222a46.png"
+              style="
+                box-sizing: border-box;
+                border-left-width: 0px;
+                border-bottom-width: 0px;
+                border-right-width: 0px;
+                border-top-width: 0px;
+                border-style: none;
+                vertical-align: middle;
+                border: 0px;
+                width: 264px;
+                height: 34px;
+                margin: 0px;
+              "
+              width="264px"
+              height="34"
+            />
+          </t>
+          <t t-else="">
+            <img
+              data-file-id="2126449"
+              src="https://gallery.mailchimp.com/586e1f749e29757e8c406d0c4/images/b695d881-ce04-49c8-8520-90453dbb5402.png"
+              style="
+                box-sizing: border-box;
+                border-style: none;
+                vertical-align: middle;
+                border: 0px initial;
+                width: 108px;
+                height: 63px;
+                margin: 0px;
+              "
+              width="108px"
+              height="63"
+            /><br />
+            <br />
+            <img
+              data-file-id="2154085"
+              src="https://gallery.mailchimp.com/586e1f749e29757e8c406d0c4/images/f20f334e-8abf-467d-adbd-48cadc26c7c0.png"
+              style="
+                box-sizing: border-box;
+                border-left-width: 0px;
+                border-bottom-width: 0px;
+                border-right-width: 0px;
+                border-top-width: 0px;
+                border-style: none;
+                vertical-align: middle;
+                border: 0px;
+                width: 264px;
+                height: 34px;
+                margin: 0px;
+              "
+              width="264px"
+              height="34"
+            />
+          </t>
+        </td>
+        <td
+          class="mcnTextContent"
+          style="
+            width: 40%;
+            font-size: 12px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            color: white;
+            text-align: left;
+          "
+          valign="top"
+        >
+          Intervlag<br />
+          Tempelhof 1<br />
+          3045 PV Rotterdam<br />
+          Nederland<br />
+          <br />
+          <a
+            href="callto:+31%20(0)10%20785%2067%2066"
+            target="_blank"
+            style="
+              box-sizing: border-box;
+              background-color: transparent;
+              text-decoration-thickness: auto;
+              text-decoration: none;
+              color: white;
+            "
+            >+31 (0)10 785 67 66</a
+          ><br />
+          <a
+            style="
+              box-sizing: border-box;
+              background-color: transparent;
+              text-decoration-thickness: auto;
+              text-decoration: underline;
+              color: white;
+            "
+            href="mailto:info@intervlag.nl"
+            target="_blank"
+            >info@intervlag.nl</a
+          ><br />
+          <a
+            style="
+              box-sizing: border-box;
+              background-color: transparent;
+              text-decoration-thickness: auto;
+              text-decoration: underline;
+              color: white;
+            "
+            href="http://www.intervlag.nl"
+            target="_blank"
+            >www.intervlag.nl</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+        </p>
+      </field>
+    </record>
+  </data>
+</odoo>

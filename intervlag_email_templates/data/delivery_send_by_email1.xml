@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="stock.mail_template_data_delivery_confirmation" model="mail.template">
+            <field name="name">Delivery: Send by Email1</field>
+            <field name="subject">Your order is complete</field>
+            <field name="email_from">{{ (object.partner_id.email or '') }}</field>
+            <field name="partner_to">{{object.partner_id.id}}</field>
+            <field name="model_id" ref="delivery.model_stock_picking"/>
+            <field name="report_template" eval="False"/>
+            <field name="report_name" eval="False"/>
+            <field name="lang">{{object.partner_id.lang}}</field>
+            <field name="body_html" type="html">
+                <p style="box-sizing:border-box;margin-bottom: 0px;">
+                    <style>
+                        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&amp;display=swap');
+                    </style>
+                </p>
+                <div style="padding:0px;width:600px;margin:auto;background: #FFFFFF repeat top /100%;color:#777777">
+                    <table cellspacing="0" cellpadding="0" align="center" border="0" width="100%" style="box-sizing:border-box;border-collapse:collapse; max-width:600px;margin:0 auto;">
+                        <tbody>
+                            <tr>
+                                <td valign="center" width="200" style="font-size:12px">
+                                    <t t-if="object.partner_id.lang != 'nl_NL'" data-oe-t-group="0" data-oe-t-selectable="true" data-oe-t-group-active="true" data-oe-t-inline="true">
+                                        <img src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/3a194bcf-d3b1-45af-a9d5-91a06f109982.png" class="mcnRetinaImage" style="border-style:none;box-sizing:border-box;outline-width:initial;outline-style:none;outline-color:initial;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;border-top-width:0px;border-width: 0px; height: 116px; outline: none; vertical-align: bottom; max-width: 600px; padding-bottom: 0px; width: 600px; display: inline ;" align="middle" width="600px" height="116"/>
+                                    </t>
+                                    <t t-else="" data-oe-t-selectable="true" data-oe-t-group="0" data-oe-t-inline="true">
+                                        <img src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/72205120-7b22-4410-97fb-43e4149c0183.png" class="mcnRetinaImage" style="border-style:none;box-sizing:border-box;outline-width:initial;outline-style:none;outline-color:initial;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;border-top-width:0px;border-width: 0px; height: 116px; outline: none; vertical-align: bottom; max-width: 600px; padding-bottom: 0px; width: 600px; display: inline ;" align="middle" width="600px" height="116"/>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="background-color:#f9b000;padding-top: 40px;padding-bottom: 50px;">
+                                    <div>
+                                        <h3 style="box-sizing:border-box;line-height:1.2;font-family:'Raleway', sans-serif;font-weight: 900;font-size: 24px;color: #fff;margin: 0px 0px 48px 0px;text-transform: uppercase;">YOUR ORDER IS COMPLETE! </h3>
+                                        <div style="color:#ffffff;font-family: Helvetica;font-size: 13px;line-height: 19.5px;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;">
+                                            <p style="margin:0px 0 12px 0;box-sizing:border-box;">Yes! Your order <t t-out="object.origin" contenteditable="false" data-oe-t-inline="true" oe-keep-contenteditable=""></t> is complete. </p>
+                                            <t t-if="object.sale_id.client_order_ref" data-oe-t-group="1" data-oe-t-group-active="true" data-oe-t-inline="true"> Your order reference: <t t-out="object.sale_id.client_order_ref" contenteditable="false" data-oe-t-inline="true" oe-keep-contenteditable=""></t>
+                                            </t>
+                                            <br></br>
+                                            <t t-if="object.carrier_tracking_ref" data-oe-t-group="2" data-oe-t-group-active="true">
+                                                <t t-if="object.carrier_tracking_url" data-oe-t-group="3" data-oe-t-selectable="true" data-oe-t-group-active="true">
+                                                    <p style="margin:0px 0 12px 0;box-sizing:border-box;">Did you choose the delivery option? Than this will be your tracking link:</p>
+                                                    <a style="text-decoration:none;box-sizing:border-box;background-color:transparent;color:#008f8c;display:block;padding-top: 18px;" t-attf-href="{{object.carrier_tracking_url}}" target="_blank">
+                                                        <img align="center" src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/0a728f38-550d-41bf-946b-c44bdaaf5cb4.png" class="mcnRetinaImage" style="border-style:none;box-sizing:border-box;outline-width:initial;outline-style:none;outline-color:initial;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;border-top-width:0px;border-width: 0px; height: 30px; outline: none; vertical-align: bottom; max-width: 142px; padding-bottom: 0px; width: 142px; display: inline ;" width="142px" height="30"/>
+                                                    </a>
+                                                </t>
+                                                <t t-else="" data-oe-t-selectable="true" data-oe-t-group="3" data-oe-t-inline="true">
+                                                    <t t-out="object.carrier_tracking_ref" contenteditable="false" data-oe-t-inline="true" oe-keep-contenteditable=""></t>
+                                                </t>
+                                            </t>
+                                            <a href="#" style="text-decoration:none;box-sizing:border-box;background-color:transparent;color:#008f8c;display:block;padding-top: 45px;">
+                                                <img src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/d6c9ca38-3b65-4877-a223-41db5dd5d700.gif" class="mcnRetinaImage" style="border-style:none;box-sizing:border-box;outline-width:initial;outline-style:none;outline-color:initial;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;border-top-width:0px;border-width: 0px; height: 264px; outline: none; vertical-align: bottom; max-width: 264px; padding-bottom: 0px; width: 264px; display: inline ;" align="center" width="264px" height="264"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" style="background-color:#009a93;padding-top: 50px;padding-bottom: 45px;">
+                                    <a href="#" style="text-decoration:none;box-sizing:border-box;background-color:transparent;color:#008f8c;display:block;padding: 9px;">
+                                        <img src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/f02de05d-7a3b-45bc-8420-6bf939347698.png" class="mcnRetinaImage" style="border-style:none;box-sizing:border-box;outline-width:initial;outline-style:none;outline-color:initial;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;border-top-width:0px;border-width: 0px; height: 78px; outline: none; vertical-align: bottom; max-width: 72px; padding-bottom: 0px; width: 72px; display: inline ;" align="middle" width="72px" height="78"/>
+                                    </a>
+                                    <h3 style="box-sizing:border-box;line-height:1.2;font-family:'Raleway', sans-serif;font-weight: 900;padding-top: 9px;font-size:24px;color:#fff;text-transform: uppercase;margin: 0px;padding-bottom: 38px;">DID YOU CHOOSE THE PICK UP OPTION? </h3>
+                                    <t t-if="object.company_id" data-oe-t-group="4" data-oe-t-group-active="true">
+                                        <div>
+                                            <p style="margin:0px 0 12px 0;box-sizing:border-box;color:#fff;font-family: Helvetica;padding-bottom: 28px;">Your order is now ready for pick up. This is our address:</p>
+                                            <div style="color:#fff;font-family: Helvetica;font-size: 13px;background-color: #007973;padding-top: 29px;padding-bottom: 29px;line-height: 19.5px;">
+                                                <span style="display:block;">
+                                                    <t t-out="object.company_id.name" contenteditable="false" data-oe-t-inline="true" oe-keep-contenteditable=""></t>
+                                                </span>
+                                                <span style="display:block;">
+                                                    <t t-out="object.company_id.street" contenteditable="false" data-oe-t-inline="true" oe-keep-contenteditable=""></t>
+                                                    <t t-out="object.company_id.street2" contenteditable="false" data-oe-t-inline="true" oe-keep-contenteditable=""></t>
+                                                </span>
+                                                <span style="display:block;">
+                                                    <t t-out="object.company_id.zip" contenteditable="false" data-oe-t-inline="true" oe-keep-contenteditable=""></t>
+                                                    <t t-out="object.company_id.city" contenteditable="false" data-oe-t-inline="true" oe-keep-contenteditable=""></t>
+                                                </span>
+                                                <span style="display:block;">
+                                                    <t t-out="object.company_id.country_id.name" contenteditable="false" data-oe-t-inline="true" oe-keep-contenteditable=""></t>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table cellspacing="0" cellpadding="0" width="100%" style="box-sizing:border-box;border-collapse:collapse;">
+                        <tbody>
+                            <tr style="background-color:#000000;padding-top:25px;padding-bottom:25px;color:#ffffff;font-family:Helvetica;font-size:12px;line-height:150%;text-align:center;font-weight:normal;">
+                                <td class="mcnTextContent" style="text-align:left;padding-left:20px;padding-top:25px;padding-bottom:25px;" valign="top">
+                                    <t t-if="object.partner_id.lang != 'nl_NL'" data-oe-t-group="5" data-oe-t-selectable="true" data-oe-t-group-active="true" data-oe-t-inline="true">
+                                        <img data-file-id="2126449" height="63" src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/9830b47b-2880-4efc-af54-7f725f3f6fe5.png" style="border-style:none;box-sizing:border-box;vertical-align:middle;border: 0px initial ; width: 108px; height: 63px; margin: 0px;" width="108px"/>
+                                        <br></br>
+                                        <br></br>
+                                        <img data-file-id="2154085" height="34" src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/878e68ac-df48-431d-95cc-e8f1b8222a46.png" style="box-sizing:border-box;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;border-top-width:0px;vertical-align:middle;border: 0px; width: 264px; height: 34px; margin: 0px;" width="264px"/>
+                                    </t>
+                                    <t t-else="" data-oe-t-selectable="true" data-oe-t-group="5" data-oe-t-inline="true">
+                                        <img data-file-id="2126449" height="63" src="https://gallery.mailchimp.com/586e1f749e29757e8c406d0c4/images/b695d881-ce04-49c8-8520-90453dbb5402.png" style="border-style:none;box-sizing:border-box;vertical-align:middle;border: 0px initial ; width: 108px; height: 63px; margin: 0px;" width="108px"/>
+                                        <br></br>
+                                        <br></br>
+                                        <img data-file-id="2154085" height="34" src="https://gallery.mailchimp.com/586e1f749e29757e8c406d0c4/images/f20f334e-8abf-467d-adbd-48cadc26c7c0.png" style="box-sizing:border-box;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;border-top-width:0px;vertical-align:middle;border: 0px; width: 264px; height: 34px; margin: 0px;" width="264px"/>
+                                    </t>
+                                </td>
+                                <td class="mcnTextContent" style="width:40%;font-size:12px; padding-top:25px;padding-bottom:25px;color:white;text-align: left;" valign="top"> Intervlag <br></br> Tempelhof 1 <br></br>br> 3045 PV Rotterdam <br></br> Nederland <br></br>
+                                    <br></br>
+                                    <a href="callto:+31 (0)10 785 67 66" target="_blank" style="box-sizing:border-box;background-color:transparent;text-decoration:none;color:white;">+31 (0)10 785 67 66</a>
+                                    <br></br>
+                                    <a style="box-sizing:border-box;background-color:transparent;text-decoration:underline;color:white;" href="mailto:info@intervlag.nl" target="_blank">info@intervlag.nl</a>
+                                    <br></br>
+                                    <a style="box-sizing:border-box;background-color:transparent;text-decoration:underline;color:white;" href="http://www.intervlag.nl" target="_blank">www.intervlag.nl</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record
+                id="valggenmasten_so"
+                model="mail.template">
+            <field name="name">Vlaggenmasten</field>
+            <field name="subject">Vlaggenmasten</field>
+            <field name="body_html" type="html">
+                <p style="margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">
+                    <font style="color:rgb(0, 0, 0);">Hartelijk dank voor de
+                        opdracht tot het plaatsen van de vlaggenmast(en). Graag
+                        ontvang ik alle bedrijfsgegevens van de locatie waar
+                        geplaatst moet worden. Om de plaatsing zo goed mogelijk
+                        te laten verlopen, ontvang ik daarnaast ook graag nog
+                        even onderstaande informatie.
+                    </font>
+                </p>
+                <br/>
+                <p style="margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">
+                    <font style="color:rgb(0, 0, 0);">1. Een duidelijke
+                        situatieschets (foto van locatie) met ingetekende
+                        plaatsbepaling van waar de masten moeten staan
+                    </font>
+                    <br/>
+                    <font style="color:rgb(0, 0, 0);">
+                        2. Naam en telefoonnummer van beslisser ter plaatse
+                    </font>
+                </p>
+                <br/>
+                <p style="margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">
+                    <b style="font-weight:bolder;">
+                        <font style="color:rgb(0, 0, 0);">Kan de beslisser niet
+                            ter plaatse zijn?
+                        </font>
+                    </b>
+                </p>
+                <br/>
+                <p style="margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">
+                    <font style="color:rgb(0, 0, 0);">3. Zorg dat er piketten in
+                        de grond staan op de plek waar de masten moeten komen te
+                        staan. Op deze manier plaatsen onze monteurs altijd op
+                        de juiste plek
+                    </font>
+                </p>
+                <br/>
+                <p style="margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">
+                    <b style="font-weight:bolder;">
+                        <font style="color:rgb(0, 0, 0);">Eigen Risico</font>
+                    </b>
+                </p>
+                <br/>
+                <p style="margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">
+                    <font style="color:rgb(0, 0, 0);">4. De klant is
+                        verantwoordelijk voor een KLIC-melding of moet zeker
+                        weten dat er geen leidingen ter plaatse in de grond
+                        liggen. Wij zijn nooit verantwoordelijk voor eventuele
+                        schade die tijdens de plaatsing kan ontstaan.
+                    </font>
+                    <br/>
+                    <font style="color:rgb(0, 0, 0);">Bij het raken van
+                        leidingen nemen de monteurs altijd contact op met de
+                        netwerkbeheerders. Eventuele wachturen en meerwerk
+                        verplaatsen van de fundering bij het raken van een
+                        leiding, zal op nacalculatie worden doorberekend.
+                    </font>
+                </p>
+                <br/>
+                <p style="margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">
+                    <b style="font-weight:bolder;">
+                        <font style="color:rgb(0, 0, 0);">Datum van plaatsing
+                        </font>
+                    </b>
+                </p>
+                <br/>
+                <p style="margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">
+                    <font style="color:rgb(0, 0, 0);">Wij streven ernaar binnen
+                        3-4 weken de masten te plaatsen, echter kan dit afwijken
+                        in drukke perioden. Onze plaatsingsopdrachten worden
+                        altijd verzameld zodat we de meest economische routes
+                        kunnen maken en zo de prijzen scherp kunnen houden.
+                    </font>
+                </p>
+                <br/>
+                <p style="margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">
+                    <font style="color:rgb(0, 0, 0);">Het kan daardoor voorkomen
+                        dat het wat langer duurt voordat er een datum bekend is.
+                        Het kan dus gebeuren dat de datum pas een aantal dagen
+                        vooraf bekend is. Als er een harde deadline voor een
+                        opdracht is, vernemen wij dat graag vooraf aan de
+                        opdracht.
+                    </font>
+                    <br/>
+                    <font style="color:rgb(0, 0, 0);">Indien mogelijk neemt de
+                        monteur contact op met de klant voor bespreking van de
+                        datum.
+                    </font>
+                </p>
+                <br/>
+                <p style="margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">
+                    <font style="color:rgb(0, 0, 0);">Ik zie alle gegevens graag
+                        tegemoet en bij vragen verneem ik het graag!
+                    </font>
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

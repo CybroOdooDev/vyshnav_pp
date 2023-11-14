@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="gift_not_selected" model="mail.template">
+      <field name="name">User:Gift Not Selected</field>
+      <field name="subject">User:Gift Not Selected</field>
+      <field name="body_html" type="html">
+          <p style="box-sizing: border-box; margin-bottom: 0px">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@900&amp;display=swap");
+  </style>
+</p>
+<div
+  style="
+    padding: 0px;
+    width: 600px;
+    margin: auto;
+    background: #ffffff repeat top / 100%;
+    color: #777777;
+  "
+>
+  <table
+    cellspacing="0"
+    cellpadding="0"
+    align="center"
+    border="0"
+    width="100%"
+    style="
+      box-sizing: border-box;
+      border-collapse: collapse;
+      max-width: 600px;
+      margin: 0 auto;
+    "
+  >
+    <tbody>
+      <tr>
+        <td valign="center" width="200" style="font-size: 12px">
+          <t t-if="object.lang!='nl_NL'">
+            <img
+              src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/3a194bcf-d3b1-45af-a9d5-91a06f109982.png"
+              class="mcnRetinaImage"
+              style="
+                border-style: none;
+                box-sizing: border-box;
+                outline-width: initial;
+                outline-style: none;
+                outline-color: initial;
+                border-left-width: 0px;
+                border-bottom-width: 0px;
+                border-right-width: 0px;
+                border-top-width: 0px;
+                border-width: 0px;
+                height: 116px;
+                outline: none;
+                vertical-align: bottom;
+                max-width: 600px;
+                padding-bottom: 0px;
+                width: 600px;
+                display: inline;
+              "
+              align="middle"
+              width="600px"
+              height="116"
+            />
+          </t>
+          <t t-else="">
+            <img
+              src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/b0b4c1ea-175c-4c4a-9b2b-cf38fad02861.gif?access_token=a3a91608-bdb9-41cf-afff-a0adc5e53289"
+              class="mcnRetinaImage"
+              style="
+                border-style: none;
+                box-sizing: border-box;
+                outline-width: initial;
+                outline-style: none;
+                outline-color: initial;
+                border-left-width: 0px;
+                border-bottom-width: 0px;
+                border-right-width: 0px;
+                border-top-width: 0px;
+                border-width: 0px;
+                height: 150px;
+                outline: none;
+                vertical-align: bottom;
+                max-width: 600px;
+                padding-bottom: 0px;
+                width: 600px;
+                display: inline;
+              "
+              align="middle"
+              width="600px"
+              height="150"
+            />
+          </t>
+        </td>
+      </tr>
+
+      <tr>
+        <td
+          align="center"
+          style="
+            background-color: #f9b000;
+            padding-top: 40px;
+            padding-bottom: 45px;
+          "
+        >
+          <a
+            href="#"
+            style="
+              text-decoration: none;
+              box-sizing: border-box;
+              background-color: transparent;
+              color: #008f8c;
+              display: block;
+              padding: 9px;
+            "
+          >
+            <img
+              src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/6f868f89-4756-4ab3-bc76-df77c64c9a85.png"
+              class="mcnRetinaImage"
+              style="
+                box-sizing: border-box;
+                border-left-width: 0px;
+                border-bottom-width: 0px;
+                border-right-width: 0px;
+                border-top-width: 0px;
+                outline-width: initial;
+                outline-style: none;
+                outline-color: initial;
+                outline: none;
+                width: 125px;
+                border: 0px;
+                height: 125px;
+                vertical-align: bottom;
+                padding-bottom: 0px;
+                max-width: 125px;
+                display: inline;
+              "
+              align="middle"
+              width="125px"
+              height="125"
+            />
+          </a>
+
+          <div style="padding-top: 20px">
+            <h3
+              style="
+                box-sizing: border-box;
+                font-family: 'Raleway', sans-serif;
+                font-weight: 900;
+                font-size: 24px;
+                color: #fff;
+                text-transform: uppercase;
+                padding: 9px;
+                margin: 0px;
+                line-height: normal;
+              "
+            >
+              a present is waiting for you
+            </h3>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" style="padding-top: 40px; padding-bottom: 40px">
+          <div
+            style="
+              color: #666666;
+              font-family: Helvetica;
+              font-size: 13px;
+              padding: 9px 18px 9px;
+            "
+          >
+            <p style="margin: 0px 0 12px 0; box-sizing: border-box">
+              Note, there is still a nice gift waiting for you.
+            </p>
+            <br />
+            <p style="margin: 0px 0 12px 0; box-sizing: border-box">
+              Log in quickly and order your gift.
+            </p>
+          </div>
+          <a
+            href="https://www.intervlag.nl/web/login"
+            target="_blank"
+            style="
+              text-decoration: none;
+              box-sizing: border-box;
+              background-color: transparent;
+              color: #008f8c;
+            "
+          >
+            <img
+              src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/b7bd4091-0136-4cad-a866-bf784b91c3cf.png"
+              class="mcnRetinaImage"
+              style="
+                box-sizing: border-box;
+                outline-width: initial;
+                outline-style: none;
+                outline-color: initial;
+                border-left-width: 0px;
+                border-bottom-width: 0px;
+                border-right-width: 0px;
+                border-top-width: 0px;
+                border: 0px;
+                height: 30px;
+                outline: none;
+                vertical-align: bottom;
+                max-width: 135px;
+                padding-bottom: 0px;
+                display: inline;
+                width: 135px;
+              "
+              align="middle"
+              width="135px"
+              height="30"
+            />
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table
+    cellspacing="0"
+    cellpadding="0"
+    width="100%"
+    style="box-sizing: border-box; border-collapse: collapse"
+  >
+    <tbody>
+      <tr
+        style="
+          background-color: #000000;
+          padding-top: 25px;
+          padding-bottom: 25px;
+          color: #ffffff;
+          font-family: Helvetica;
+          font-size: 12px;
+          line-height: 150%;
+          text-align: center;
+          font-weight: normal;
+        "
+      >
+        <td
+          class="mcnTextContent"
+          style="
+            text-align: left;
+            padding-left: 20px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+          "
+          valign="top"
+        >
+          <t t-if="object.lang!='nl_NL'">
+            <img
+              data-file-id="2126449"
+              height="63"
+              src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/9830b47b-2880-4efc-af54-7f725f3f6fe5.png"
+              style="
+                border-style: none;
+                box-sizing: border-box;
+                vertical-align: middle;
+                border: 0px initial;
+                width: 108px;
+                height: 63px;
+                margin: 0px;
+              "
+              width="108px"
+            /><br />
+            <br />
+            <img
+              data-file-id="2154085"
+              height="34"
+              src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/878e68ac-df48-431d-95cc-e8f1b8222a46.png"
+              style="
+                box-sizing: border-box;
+                border-left-width: 0px;
+                border-bottom-width: 0px;
+                border-right-width: 0px;
+                border-top-width: 0px;
+                vertical-align: middle;
+                border: 0px;
+                width: 264px;
+                height: 34px;
+                margin: 0px;
+              "
+              width="264px"
+            />
+          </t>
+          <t t-else="">
+            <img
+              data-file-id="2126449"
+              height="63"
+              src="https://gallery.mailchimp.com/586e1f749e29757e8c406d0c4/images/b695d881-ce04-49c8-8520-90453dbb5402.png"
+              style="
+                border-style: none;
+                box-sizing: border-box;
+                vertical-align: middle;
+                border: 0px initial;
+                width: 108px;
+                height: 63px;
+                margin: 0px;
+              "
+              width="108px"
+            /><br />
+            <br />
+            <img
+              data-file-id="2154085"
+              height="34"
+              src="https://gallery.mailchimp.com/586e1f749e29757e8c406d0c4/images/f20f334e-8abf-467d-adbd-48cadc26c7c0.png"
+              style="
+                box-sizing: border-box;
+                border-left-width: 0px;
+                border-bottom-width: 0px;
+                border-right-width: 0px;
+                border-top-width: 0px;
+                vertical-align: middle;
+                border: 0px;
+                width: 264px;
+                height: 34px;
+                margin: 0px;
+              "
+              width="264px"
+            />
+          </t>
+        </td>
+        <td
+          class="mcnTextContent"
+          style="
+            width: 40%;
+            font-size: 12px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            color: white;
+            text-align: left;
+          "
+          valign="top"
+        >
+          Intervlag<br />
+          Tempelhof 1<br />
+          3045 PV Rotterdam<br />
+          Nederland<br />
+          <br />
+          <a
+            href="callto:+31 (0)10 785 67 66"
+            target="_blank"
+            style="
+              box-sizing: border-box;
+              background-color: transparent;
+              text-decoration: none;
+              color: white;
+            "
+            >+31 (0)10 785 67 66</a
+          ><br />
+          <a
+            style="
+              box-sizing: border-box;
+              background-color: transparent;
+              text-decoration: underline;
+              color: white;
+            "
+            href="mailto:info@intervlag.nl"
+            target="_blank"
+            >info@intervlag.nl</a
+          ><br />
+          <a
+            style="
+              box-sizing: border-box;
+              background-color: transparent;
+              text-decoration: underline;
+              color: white;
+            "
+            href="http://www.intervlag.nl"
+            target="_blank"
+            >www.intervlag.nl</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+      </field>
+    </record>
+  </data>
+</odoo>

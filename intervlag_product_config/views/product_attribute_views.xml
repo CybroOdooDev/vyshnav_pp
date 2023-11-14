@@ -7,11 +7,15 @@
         <field name="inherit_id" ref="product.product_attribute_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='create_variant']" position="after">
+                <field name="is_required" widget="boolean_toggle"/>
                 <field name="highlight_on_report" widget="boolean_toggle"/>
+                <field name="attribute_type" />
             </xpath>
             <xpath expr="//field[@name='value_ids']/tree" position="inside">
                 <field name="is_custom_size"
-                       groups="product.group_product_variant" colspan="2"/>
+                       groups="product.group_product_variant" colspan="2"
+                       attrs="{'column_invisible': [('parent.attribute_type', '!=', 'size_attribute')]}"
+                />
             </xpath>
         </field>
     </record>
@@ -25,7 +29,11 @@
                ref="intervlag_sale.product_attribute_value_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='attribute_id']" position="before">
-                <field name="is_custom_size"/>
+                <field name="attribute_type" invisible="1"/>
+                <field name="partner_ids" widget="many2many_tags"
+                       invisible="1"/>
+                <field name="is_custom_size"
+                       attrs="{'invisible': [('attribute_type', '!=', 'size_attribute')]}"/>
             </xpath>
         </field>
     </record>

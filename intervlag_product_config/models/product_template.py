@@ -10,6 +10,18 @@ class ProductTemplate(models.Model):
     is_configurable_product = fields.Boolean("Is Configurable Product",
                                              default=False,help="This is used to make the product configurable with custom size.")
 
+    @api.constrains('is_configurable_product')
+    def check_attribute_line_ids(self):
+        if self.is_configurable_product:
+            for item in self.attribute_line_ids:
+                if item.attribute_id.create_variant != 'no_variant':
+                    raise ValidationError(
+                        _("Sorry you cannot add '%s' attribute to this "
+                          "product. You"
+                          "can only add attribute with 'Variants Creation Mode'"
+                          "with 'Never (option)' to a configurable product") % (
+                            item.attribute_id.name))
+
 
 class ProductTemplateAttributeLine(models.Model):
     _inherit = 'product.template.attribute.line'

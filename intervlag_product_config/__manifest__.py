@@ -10,7 +10,8 @@
     'author': 'Cybrosys Techno Solutions',
     'company': 'Cybrosys Techno Solutions',
     'website': 'https://www.cybrosys.com',
-    'depends': ['sale', 'product', 'intervlag_sale', 'website_sale','sale_product_configurator'],
+    'depends': ['sale', 'product', 'intervlag_sale', 'website_sale',
+                'sale_product_configurator'],
     'data': [
         'views/sale_order_views.xml',
         'views/product_attribute_views.xml',

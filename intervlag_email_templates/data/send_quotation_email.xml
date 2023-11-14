@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="send_quotation_only_by_mail" model="mail.template">
+      <field name="name">SO:Quotation only</field>
+      <field name="subject">Quote {{object.name}} {{object.get_reference()}}</field>
+      <field name="body_html" type="html">
+
+        <p style="margin: 0px 0px 12px; box-sizing: border-box;">
+            <span style="font-size: 14px;">Hi!
+          </span></p><p style="margin:0px 0 12px 0;box-sizing:border-box;"><span style="font-size: 14px;">
+            </span><br/><span style="font-size: 14px;">
+          </span></p><p style="margin: 0px 0px 12px; box-sizing: border-box;"><span style="font-size: 14px;">
+            Attached you will find the quote for your request.
+          </span></p><p style="margin:0px 0 12px 0;box-sizing:border-box;"><span style="font-size: 14px;">
+            </span><br/><span style="font-size: 14px;">
+          </span></p><p style="margin: 0px 0px 12px; box-sizing: border-box;"><span style="font-size: 14px;">
+            If you have any questions, please let me know.</span><br/><span style="font-size: 14px;">
+            Good luck with the sale!
+          </span></p><p style="margin:0px 0 12px 0;box-sizing:border-box;"><span style="font-size: 14px;">
+            </span><br/><span style="font-size: 14px;">
+          </span></p><p style="margin: 0px 0px 12px; box-sizing: border-box;"><span style="font-size: 14px;">
+            Best regards,</span><br/><br/><t t-out="user.signature or ''"></t>
+          </p><p style="box-sizing:border-box;margin-bottom: 0px;">
+
+          <!-- dutch
+
+          <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+            Hi!
+          </p>
+          <p>
+            <br/>
+          </p>
+          <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+            Bijgaand tref je de offerte aan van je aanvraag. Let op; de oplages in de offerte rekenen wij per ontwerp.
+
+          </p>
+          <p>
+            <br/>
+          </p>
+          <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+            Mocht je nog vragen hebben dan verneem ik deze graag van je.<br/>
+            Succes met de verkoop!
+          </p>
+          <p>
+            <br/>
+          </p>
+          <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+            Met vriendelijke groet,<br/><br/><span style="color:rgb(0, 0, 0);font-family: Roboto, &quot;Odoo Unicode Support Noto&quot;, sans-serif;"><t t-out="user.signature or ''"></t></span>
+          </p> -->
+
+          <!-- german
+
+          <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+            Hallo!
+          </p>
+          <p>
+            <br/>
+          </p>
+          <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+            In der Anlage finden Sie den Kostenvoranschlag für Ihre Anfrage.
+          </p>
+          <p>
+            <br/>
+          </p>
+          <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+            Wenn Sie weitere Fragen haben, lassen Sie es mich bitte wissen.<br/>
+            Viel Glück mit dem Verkauf!
+          </p>
+          <p>
+            <br/>
+          </p>
+          <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+            Mit freundlichen Grüßen,<br/><br/><span style="color:rgb(0, 0, 0);font-family: Roboto, &quot;Odoo Unicode Support Noto&quot;, sans-serif;"><t t-out="user.signature or ''"></t></span>
+          </p> -->
+        </p>
+      </field>
+    </record>
+  </data>
+</odoo>

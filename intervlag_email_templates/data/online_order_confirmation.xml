@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="0">
+    <record id="sale.mail_template_sale_confirmation" model="mail.template">
+      <field name="name">Online Quote: confirmation e-mail</field>
+<!--      <field name="subject">{{ object.get_delivery_days() }}Your order {{ object.name }} {{ object.get_reference() }} is confirmed</field>-->
+      <field name="body_html" type="html">
+          <p style="margin-bottom: 0px;"><style>
+              @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&amp;amp;display=swap');
+            </style>
+            </p><div style="font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;padding:0px;width:600px;margin:auto;background: #FFFFFF repeat top /100%;color:#777777">
+              <table style="border-collapse:collapse;max-width:600px;margin:0 auto;" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                <tbody>
+                  <tr>
+                    <td style="font-size:12px" width="200" valign="center">
+                      <t t-if="object.partner_id.lang != 'nl_NL'" data-oe-t-group="0" data-oe-t-selectable="true" data-oe-t-group-active="true" data-oe-t-inline="true">
+                      <img src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/3a194bcf-d3b1-45af-a9d5-91a06f109982.png" class="mcnRetinaImage" style="border-style:none;vertical-align:middle;border-width:0px;height: auto; outline: none; vertical-align: bottom; max-width: 600px; padding-bottom: 0px; display: inline !important; width: auto;" width="600" height="116" align="middle"/>
+                      </t>
+                      <t t-else="" data-oe-t-selectable="true" data-oe-t-group="0" data-oe-t-inline="true">
+                      <img src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/72205120-7b22-4410-97fb-43e4149c0183.png" class="mcnRetinaImage" style="border-style:none;vertical-align:middle;border-width:0px;height: auto; outline: none; vertical-align: bottom; max-width: 600px; padding-bottom: 0px; display: inline !important; width: auto;" width="600" height="116" align="middle"/>
+                      </t>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="background-color:rgb(249, 176, 0);padding-top: 50px;padding-bottom: 50px;" align="center">
+                      <div style="font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">
+                        <h3 style="line-height:1.2;font-family:'Raleway', sans-serif;font-weight: 900;font-size: 24px;color: #fff;margin: 0px;text-transform:uppercase">THANK YOU FOR ORDERING!</h3>
+                          <p style="margin:0px;color:rgb(255, 255, 255);font-family: Helvetica;font-size: 13px;padding-top: 12px;">Your order  <a style="background-color:transparent;text-decoration-thickness:auto;color:#fff;text-decoration:underline;" t-attf-href="/quote/{{ object.id }}/{{ object.access_token }}"><t t-out="object.name" contenteditable="false" data-oe-t-inline="true"></t></a>  has been confirmed.</p>
+                          <div style="font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">
+                          <a href="#" style="background-color:transparent;text-decoration-thickness:auto;color:rgb(0, 135, 132);display:block;padding-top: 40px;padding-bottom:35px;">
+                            <img src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/c921d4bc-61df-4175-a65d-be02c11bd683.gif" class="mcnRetinaImage" style="border-style:none;vertical-align:middle;border-width:0px;height: auto; outline: none; vertical-align: bottom; max-width: 263px; padding-bottom: 0px; display: inline !important; width: auto;" width="263" height="263" align="middle"/>
+                          </a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="background-color:rgb(0, 154, 147);padding-top: 69px;padding-bottom: 45px;" align="center">
+                      <p style="margin:0px;font-family:-apple-system, HelveticaNeue, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;font-size:14px;color:rgb(121, 121, 121);padding: 0px;text-size-adjust: 100%;color: rgb(255, 255, 255);font-family: Helvetica;font-size: 13px;line-height: 19.5px;text-align: center;">
+                        <span style="font-size:24px;display: block;margin-bottom: 17px;"><strong style="font-weight:bold;">ANY QUESTIONS?</strong></span>
+                        </p><p style="margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;color:#fff;">If you have any questions, don't hesitate to contact us.</p>
+                      <p style="margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;"></p>
+                      <p style="font-family:-apple-system, HelveticaNeue, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;font-size:14px;color:rgb(121, 121, 121);margin-top: 10px; padding: 0px; text-size-adjust: 100%; color: rgb(255, 255, 255); font-family: Helvetica; font-size: 13px; line-height: 19.5px; text-align: center;">
+                            Thanks for choosing Intervlag!
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding-top:47px;padding-bottom: 45px;" align="center">
+                      <div style="font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;text-align:center;">
+                        <span style="font-size:24px;color: #000;display: inline-block;padding-bottom: 10px;">
+                          <strong style="font-weight:bold;">SEE YOUR DOCUMENTS?</strong>
+                        </span>
+                        <p style="margin:0px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;">Do you want to view all your documents again? Then you can in our online portal.
+                        </p>
+                      </div>
+
+                      <div style="padding-top:15px;color: rgb(102, 102, 102);font-size: 13px;font-family: Helvetica;">
+                        <a href="/" style="color:#fff;text-decoration-thickness: initial;text-size-adjust: 100%;display: inline-block;font-weight: bold;text-align: center;border-radius: 50px;background-color: rgb(227, 6, 19);font-family: Arial;font-size: 13px;padding: 10px;line-height: 12px;text-decoration: none;margin-bottom: 18px;text-transform: uppercase;">Online Portal</a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table style="border-collapse:collapse;" width="100%" cellspacing="0" cellpadding="0">
+                <tbody>
+                  <tr style="background-color:#000000;padding-top:25px;padding-bottom:25px;color:#ffffff;font-family:Helvetica;font-size:12px;line-height:150%;text-align:center;font-weight:normal;">
+                    <td class="mcnTextContent" style="text-align:left;padding-left:20px;padding-top:25px;padding-bottom:25px;" valign="top">
+                      <t t-if="object.partner_id.lang != 'nl_NL'" data-oe-t-group="1" data-oe-t-selectable="true" data-oe-t-group-active="true" data-oe-t-inline="true">
+                            <img data-file-id="2126449" src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/9830b47b-2880-4efc-af54-7f725f3f6fe5.png" style="border-style:none;vertical-align:middle;border:0px initial;width: 108px; height: 63px; margin: 0px;" width="108" height="63"/><br/>
+                            <br/>
+                            <img data-file-id="2154085" src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/878e68ac-df48-431d-95cc-e8f1b8222a46.png" style="border-style:none;vertical-align:middle;border:0px;width: 264px; height: 34px; margin: 0px;" width="264" height="34"/>
+                      </t>
+                      <t t-else="" data-oe-t-selectable="true" data-oe-t-group="1" data-oe-t-inline="true">
+                            <img data-file-id="2126449" src="https://gallery.mailchimp.com/586e1f749e29757e8c406d0c4/images/b695d881-ce04-49c8-8520-90453dbb5402.png" style="border-style:none;vertical-align:middle;border:0px initial;width: 108px; height: 63px; margin: 0px;" width="108" height="63"/><br/>
+                            <br/>
+                            <img data-file-id="2154085" src="https://gallery.mailchimp.com/586e1f749e29757e8c406d0c4/images/f20f334e-8abf-467d-adbd-48cadc26c7c0.png" style="border-style:none;vertical-align:middle;border:0px;width: 264px; height: 34px; margin: 0px;" width="264" height="34"/>
+                      </t>
+                    </td>
+                    <td class="mcnTextContent" style="width:40%;font-size:12px; padding-top:25px;padding-bottom:25px;color:white;text-align: left;" valign="top">
+                       Intervlag<br/>
+                       Tempelhof 1<br/>
+                       3045 PV Rotterdam<br/>
+                       Nederland<br/>
+                       <br/>
+                       <a href="callto:+31%20(0)10%20785%2067%2066" target="_blank" style="background-color:transparent;text-decoration-thickness:auto;text-decoration:none;color:white;">+31 (0)10 785 67 66</a><br/>
+                       <a style="background-color:transparent;text-decoration-thickness:auto;text-decoration:underline;color:white;" href="mailto:info@intervlag.nl" target="_blank">info@intervlag.nl</a><br/>
+                       <a style="background-color:transparent;text-decoration-thickness:auto;text-decoration:underline;color:white;" href="http://www.intervlag.nl" target="_blank">www.intervlag.nl</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+      </field>
+    </record>
+  </data>
+</odoo>

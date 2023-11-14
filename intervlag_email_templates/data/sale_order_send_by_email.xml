@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="sale.email_template_edi_sale" model="mail.template">
+      <field name="name">Sales Order: Send by email</field>
+      <field name="subject">Thank you for ordering</field>
+      <field name="body_html" type="html">
+        <p style="box-sizing: border-box; margin-bottom: 0px">
+          <style>
+            @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@900&amp;display=swap");
+          </style>
+        </p>
+        <div
+          style="
+            padding: 0px;
+            width: 600px;
+            margin: auto;
+            background: #ffffff repeat top / 100%;
+            color: #777777;
+          "
+        >
+          <table
+            cellspacing="0"
+            cellpadding="0"
+            align="center"
+            border="0"
+            width="100%"
+            style="
+              box-sizing: border-box;
+              border-collapse: collapse;
+              max-width: 600px;
+              margin: 0 auto;
+            "
+          >
+            <tbody>
+              <tr>
+                <td valign="center" width="200" style="font-size: 12px">
+                  <t t-if="object.partner_id.lang != 'nl_NL'">
+                    <img
+                      src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/3a194bcf-d3b1-45af-a9d5-91a06f109982.png"
+                      class="mcnRetinaImage"
+                      style="
+                        border-style: none;
+                        box-sizing: border-box;
+                        outline-width: initial;
+                        outline-style: none;
+                        outline-color: initial;
+                        border-left-width: 0px;
+                        border-bottom-width: 0px;
+                        border-right-width: 0px;
+                        border-top-width: 0px;
+                        border-width: 0px;
+                        height: auto;
+                        outline: none;
+                        vertical-align: bottom;
+                        max-width: 600px;
+                        padding-bottom: 0px;
+                        display: inline;
+                        width: auto;
+                      "
+                      align="middle"
+                      width="auto"
+                      height="116"
+                    />
+                  </t>
+                  <t t-else="">
+                    <img
+                      src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/72205120-7b22-4410-97fb-43e4149c0183.png"
+                      class="mcnRetinaImage"
+                      style="
+                        border-style: none;
+                        box-sizing: border-box;
+                        outline-width: initial;
+                        outline-style: none;
+                        outline-color: initial;
+                        border-left-width: 0px;
+                        border-bottom-width: 0px;
+                        border-right-width: 0px;
+                        border-top-width: 0px;
+                        border-width: 0px;
+                        height: auto;
+                        outline: none;
+                        vertical-align: bottom;
+                        max-width: 600px;
+                        padding-bottom: 0px;
+                        display: inline;
+                        width: auto;
+                      "
+                      align="middle"
+                      width="auto"
+                      height="116"
+                    />
+                  </t>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  align="center"
+                  style="
+                    background-color: #f9b000;
+                    padding-top: 50px;
+                    padding-bottom: 50px;
+                  "
+                >
+                  <div>
+                    <h3
+                      style="
+                        box-sizing: border-box;
+                        line-height: 1.2;
+                        font-family: 'Raleway', sans-serif;
+                        font-weight: 900;
+                        font-size: 24px;
+                        color: #fff;
+                        margin: 0px;
+                        text-transform: uppercase;
+                      "
+                    >
+                      THANK YOU FOR ORDERING!
+                    </h3>
+                    <div
+                      style="
+                        color: #ffffff;
+                        font-family: Helvetica;
+                        font-size: 13px;
+                        line-height: 19.5px;
+                        padding-right: 18px;
+                        padding-bottom: 9px;
+                        padding-left: 18px;
+                        padding-top: 40px;
+                      "
+                    >
+                      <p style="margin: 0px 0 12px 0; box-sizing: border-box">
+                        Your order
+                        <a
+                          t-attf-href="/my/orders/{{object.id}}?access_token={{object.access_token}}"
+                          style="
+                            box-sizing: border-box;
+                            background-color: transparent;
+                            color: #fff;
+                            text-decoration: underline;
+                          "
+                          ><t t-out="object.name"></t
+                        ></a>
+                        has been confirmed.
+                      </p>
+                      <a
+                        href="#"
+                        style="
+                          text-decoration: none;
+                          box-sizing: border-box;
+                          background-color: transparent;
+                          color: #008f8c;
+                          display: block;
+                          padding-top: 40px;
+                          padding-bottom: 53px;
+                        "
+                      >
+                        <img
+                          align="center"
+                          src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/c921d4bc-61df-4175-a65d-be02c11bd683.gif"
+                          class="mcnRetinaImage"
+                          style="
+                            border-style: none;
+                            box-sizing: border-box;
+                            outline-width: initial;
+                            outline-style: none;
+                            outline-color: initial;
+                            border-left-width: 0px;
+                            border-bottom-width: 0px;
+                            border-right-width: 0px;
+                            border-top-width: 0px;
+                            border-width: 0px;
+                            height: auto;
+                            outline: none;
+                            vertical-align: bottom;
+                            max-width: 263px;
+                            padding-bottom: 0px;
+                            display: inline;
+                            width: auto;
+                          "
+                          width="auto"
+                          height="263"
+                        />
+                      </a>
+                      <p style="margin: 0px 0 12px 0; box-sizing: border-box">
+                        You can see all your quotations, orders and invoices
+                        <br />by going to our<a
+                          href="/my/account/dashboard"
+                          style="
+                            box-sizing: border-box;
+                            background-color: transparent;
+                            color: #fff;
+                            text-decoration: underline;
+                          "
+                          >Online Portal.</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  align="center"
+                  style="
+                    background-color: #009a93;
+                    padding-top: 50px;
+                    padding-bottom: 45px;
+                  "
+                >
+                  <h3
+                    style="
+                      margin: 0px 0 6px 0;
+                      box-sizing: border-box;
+                      line-height: 1.2;
+                      font-family: 'Raleway', sans-serif;
+                      font-weight: 900;
+                      font-size: 24px;
+                      color: #fff;
+                      text-transform: uppercase;
+                    "
+                  >
+                    ANY QUESTIONS?
+                  </h3>
+                  <div
+                    style="
+                      padding-top: 40px;
+                      color: #fff;
+                      font-size: 13px;
+                      font-family: Helvetica;
+                    "
+                  >
+                    <p style="mobject.partner_id.lang argin: 0px 0 12px 0; box-sizing: border-box">
+                      If you have any questions, don't hesitate to contact us.
+                    </p>
+                    <p style="box-sizing: border-box; margin: 13px 0px">
+                      Thanks for choosing Intervlag!
+                    </p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table
+            cellspacing="0"
+            cellpadding="0"
+            width="100%"
+            style="box-sizing: border-box; border-collapse: collapse"
+          >
+            <tbody>
+              <tr
+                style="
+                  background-color: #000000;
+                  padding-top: 25px;
+                  padding-bottom: 25px;
+                  color: #ffffff;
+                  font-family: Helvetica;
+                  font-size: 12px;
+                  line-height: 150%;
+                  text-align: center;
+                  font-weight: normal;
+                "
+              >
+                <td
+                  class="mcnTextContent"
+                  style="
+                    text-align: left;
+                    padding-left: 20px;
+                    padding-top: 25px;
+                    padding-bottom: 25px;
+                  "
+                  valign="top"
+                >
+                  <t t-if="object.partner_id.lang != 'nl_NL'">
+                    <img
+                      data-file-id="2126449"
+                      height="63"
+                      src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/9830b47b-2880-4efc-af54-7f725f3f6fe5.png"
+                      style="
+                        border-style: none;
+                        box-sizing: border-box;
+                        vertical-align: middle;
+                        border: 0px initial;
+                        width: 108px;
+                        height: 63px;
+                        margin: 0px;
+                      "
+                      width="108px"
+                    /><br />
+                    <br />
+                    <img
+                      data-file-id="2154085"
+                      height="34"
+                      src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/878e68ac-df48-431d-95cc-e8f1b8222a46.png"
+                      style="
+                        box-sizing: border-box;
+                        border-left-width: 0px;
+                        border-bottom-width: 0px;
+                        border-right-width: 0px;
+                        border-top-width: 0px;
+                        vertical-align: middle;
+                        border: 0px;
+                        width: 264px;
+                        height: 34px;
+                        margin: 0px;
+                      "
+                      width="264px"
+                    />
+                  </t>
+                  <t t-else="">
+                    <img
+                      data-file-id="2126449"
+                      height="63"
+                      src="https://gallery.mailchimp.com/586e1f749e29757e8c406d0c4/images/b695d881-ce04-49c8-8520-90453dbb5402.png"
+                      style="
+                        border-style: none;
+                        box-sizing: border-box;
+                        vertical-align: middle;
+                        border: 0px initial;
+                        width: 108px;
+                        height: 63px;
+                        margin: 0px;
+                      "
+                      width="108px"
+                    /><br />
+                    <br />
+                    <img
+                      data-file-id="2154085"
+                      height="34"
+                      src="https://gallery.mailchimp.com/586e1f749e29757e8c406d0c4/images/f20f334e-8abf-467d-adbd-48cadc26c7c0.png"
+                      style="
+                        box-sizing: border-box;
+                        border-left-width: 0px;
+                        border-bottom-width: 0px;
+                        border-right-width: 0px;
+                        border-top-width: 0px;
+                        vertical-align: middle;
+                        border: 0px;
+                        width: 264px;
+                        height: 34px;
+                        margin: 0px;
+                      "
+                      width="264px"
+                    />
+                  </t>
+                </td>
+                <td
+                  class="mcnTextContent"
+                  style="
+                    width: 40%;
+                    font-size: 12px;
+                    padding-top: 25px;
+                    padding-bottom: 25px;
+                    color: white;
+                    text-align: left;
+                  "
+                  valign="top"
+                >
+                  Intervlag<br />
+                  Tempelhof 1<br />
+                  3045 PV Rotterdam<br />
+                  Nederland<br />
+                  <br />
+                  <a
+                    href="callto:+31 (0)10 785 67 66"
+                    target="_blank"
+                    style="
+                      box-sizing: border-box;
+                      background-color: transparent;
+                      text-decoration: none;
+                      color: white;
+                    "
+                    >+31 (0)10 785 67 66</a
+                  ><br />
+                  <a
+                    style="
+                      box-sizing: border-box;
+                      background-color: transparent;
+                      text-decoration: underline;
+                      color: white;
+                    "
+                    href="mailto:info@intervlag.nl"
+                    target="_blank"
+                    >info@intervlag.nl</a
+                  ><br />
+                  <a
+                    style="
+                      box-sizing: border-box;
+                      background-color: transparent;
+                      text-decoration: underline;
+                      color: white;
+                    "
+                    href="http://www.intervlag.nl"
+                    target="_blank"
+                    >www.intervlag.nl</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </field>
+<!--      <field name="report_template" ref="action_report_saleorder"/>-->
+<!--            <field name="report_name">{{ (object.name or '').replace('/','_') }}</field>-->
+            <field name="lang">{{ object.partner_id.lang }}</field>
+<!--            <field name="auto_delete" eval="True"/>-->
+    </record>
+  </data>
+</odoo>

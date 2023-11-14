@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="0">
+    <record id="late_order_mo" model="mail.template">
+      <field name="name">MO: Late Order</field>
+      <field name="subject">Late Order</field>
+      <field name="body_html" type="html">
+        <p style="margin-bottom: 0px">
+          <style>
+            @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@900&amp;display=swap");
+          </style>
+        </p>
+        <div
+          style="
+            font-size: 13px;
+            font-family: 'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;
+            padding: 0px;
+            width: 600px;
+            margin: auto;
+            background: #ffffff repeat top / 100%;
+            color: #777777;
+          "
+        >
+          <table
+            style="border-collapse: collapse; max-width: 600px; margin: 0 auto"
+            width="100%"
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+            align="center"
+          >
+            <tbody>
+              <tr>
+                <td
+                  style="
+                    font-size: 12px;
+                    text-align: center;
+                    padding: 10px 10px 25px;
+                  "
+                >
+                  <img
+                    src="https://gallery.mailchimp.com/586e1f749e29757e8c406d0c4/images/15afb269-a518-4bc5-91da-fbaab07981ca.png"
+                    style="
+                      border-style: none;
+                      vertical-align: middle;
+                      max-width: 160px;
+                      padding-bottom: 0px;
+                      display: inline !important;
+                      vertical-align: bottom;
+                      width: 80px;
+                      height: auto;
+                    "
+                    width="80"
+                    height="0"
+                    align="middle"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  style="
+                    min-width: 600px;
+                    background-color: #e52713;
+                    background-image: none;
+                    background-repeat: repeat;
+                    background-position: center center;
+                    background-size: cover;
+                    border-top: 0px;
+                    border-bottom: 0px;
+                    padding-top: 40px;
+                    padding-bottom: 50px;
+                  "
+                  align="center"
+                >
+                  <img
+                    src="https://mcusercontent.com/586e1f749e29757e8c406d0c4/images/b572b5f8-69b1-121e-adb1-2cbdd0507076.png"
+                    class="mcnRetinaImage"
+                    style="
+                      border-style: none;
+                      border-width: 0px;
+                      height: auto;
+                      outline: none;
+                      vertical-align: bottom;
+                      max-width: 360px;
+                      padding-bottom: 0px;
+                      display: inline !important;
+                      width: 223px;
+                    "
+                    width="223"
+                    height="0"
+                    align="middle"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  style="
+                    padding-top: 50px;
+                    padding-bottom: 45px;
+                    background-color: #eeedf2;
+                  "
+                  align="center"
+                >
+                  <div
+                    style="
+                      text-size-adjust: 100%;
+                      word-break: break-word;
+                      color: #666666;
+                      font-family: Helvetica;
+                      font-size: 14px;
+                      line-height: 19.5px;
+                      text-align: center;
+                      padding-right: 18px;
+                      padding-bottom: 9px;
+                      padding-left: 18px;
+                    "
+                  >
+                    <p
+                      style="
+                        margin: 0px;
+                        font-size: 13px;
+                        font-family: 'Lucida Grande', Helvetica, Verdana, Arial,
+                          sans-serif;
+                      "
+                    >
+                      De volgende orders zijn helaas niet op tijd uitgezonden.
+                    </p>
+                    <p
+                      style="
+                        margin: 0px;
+                        font-size: 13px;
+                        font-family: 'Lucida Grande', Helvetica, Verdana, Arial,
+                          sans-serif;
+                      "
+                    >
+                      --orders--
+                    </p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </field>
+    </record>
+  </data>
+</odoo>
+

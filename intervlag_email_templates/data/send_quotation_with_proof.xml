@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="email_template_edi_sale_proof" model="mail.template">
+      <field name="name">SO:Quotation + Proofs</field>
+      <field name="subject">Quote {{object.name}} {{object.get_reference()}}</field>
+      <field name="body_html" type="html">
+        <p
+          style="
+            margin: 0px 0 12px 0;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: arial, sans-serif;
+            color: #212529;
+          "
+        >
+          <font
+            class="text-black"
+            style="box-sizing: border-box; color: #000000"
+            >Hi!</font
+          >
+        </p>
+        <p
+          style="
+            margin: 0px 0 12px 0;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: arial, sans-serif;
+            color: #212529;
+          "
+        >
+          <font
+            class="text-black"
+            style="box-sizing: border-box; color: #000000"
+            >Enclosed you will find the proof and quotation for your review.
+          </font>
+        </p>
+        <p
+          style="
+            margin: 0px 0 12px 0;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: arial, sans-serif;
+            color: #212529;
+          "
+        >
+          <font
+            class="text-black"
+            style="box-sizing: border-box; color: #000000"
+          >
+            Upon approval, I can put the order into production for you.
+          </font>
+        </p>
+        <p
+          style="
+            margin: 0px 0 12px 0;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: arial, sans-serif;
+            color: #212529;
+          "
+        >
+          <font
+            class="text-black"
+            style="box-sizing: border-box; color: #000000"
+          >
+            The scheduled deployment date (if confirmed in time for the
+            particular route) is: </font
+          ><t
+            t-if="object.adjust_commitment_date"
+            t-out="object.get_date_formate(object.adjust_commitment_date)"
+          ></t
+          ><t
+            t-else=""
+            t-out="object.get_date_formate(object.expected_date)"
+          ></t>
+        </p>
+        <p
+          style="
+            margin: 0px 0 12px 0;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: arial, sans-serif;
+            color: #212529;
+          "
+        >
+          <font
+            class="text-black"
+            style="box-sizing: border-box; color: #000000"
+          >
+            I look forward to seeing your response.
+          </font>
+        </p>
+        <p
+          style="
+            margin: 0px 0 12px 0;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: arial, sans-serif;
+            color: #212529;
+          "
+        >
+          With kind regards,<br />
+        </p>
+        <p style="margin: 0px 0 12px 0; box-sizing: border-box">
+          <span
+            style="
+              color: #000000;
+              font-family: Roboto, 'Odoo Unicode Support Noto', sans-serif;
+              font-size: 14px;
+            "
+            ><t t-out="user.signature or ''"></t
+          ></span>
+        </p>
+        <p style="box-sizing: border-box; margin-bottom: 0px">
+          <!-- dutch
+
+  <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+    Hi!
+  </p>
+  <br/>
+  <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+    Bijgaand vind je de drukproef en de offerte ter controle.
+  </p>
+  <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+    Bij akkoord kan ik de order in productie nemen voor je.
+  </p>
+  <br/>
+  <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+    De geplande uitzenddatum (indien op tijd bevestigd voor de betreffende route) is: <t t-out="object.get_date_formate(object.expected_date)"></t>
+  </p>
+  <br/>
+  <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+    Ik zie je reactie graag tegemoet.
+  </p>
+  <br/>
+  <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+    Met viendelijke groet,<br/>
+  </p>
+  <p>
+    <span style="color:rgb(0, 0, 0);font-family: Roboto, &quot;Odoo Unicode Support Noto&quot;, sans-serif; font-size: 14px;"><t t-out="user.signature or ''"></t></span>
+  </p> -->
+
+          <!-- german
+
+  <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+    Hallo!
+  </p>
+  <br/>
+  <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+    In der Anlage finden Sie den Nachweis und das Angebot zur Prüfung.
+  </p>
+  <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+    Wenn Sie einverstanden sind, kann ich den Auftrag für Sie in Produktion nehmen.
+  </p>
+  <br/>
+  <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+    Das geplante Sendedatum (sofern rechtzeitig für die betreffende Strecke bestätigt) ist: <t t-out="object.get_date_formate(object.expected_date)"></t>
+  </p>
+  <br/>
+  <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+    Ich freue mich auf Ihre Antwort.
+  </p>
+  <br/>
+  <p style="font-size:14px;font-family: arial, sans-serif;color: #212529;">
+    Mit freundlichen Grüßen,<br/>
+  </p>
+  <p>
+    <span style="color:rgb(0, 0, 0);font-family: Roboto, &quot;Odoo Unicode Support Noto&quot;, sans-serif; font-size: 14px;"><t t-out="user.signature or ''"></t></span>
+  </p> -->
+        </p>
+      </field>
+    </record>
+  </data>
+</odoo>

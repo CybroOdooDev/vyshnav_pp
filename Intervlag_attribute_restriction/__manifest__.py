@@ -9,7 +9,7 @@
     'author': 'Cybrosys Techno Solutions',
     'company': 'Cybrosys Techno Solutions',
     'website': 'https://www.cybrosys.com',
-    'depends': ['sale','product'],
+    'depends': ['sale', 'product'],
     'data': [
         'security/ir.model.access.csv',
         'views/product_template_views.xml',
@@ -20,7 +20,7 @@
             '/Intervlag_attribute_restriction/static/src/js/**/*',
             '/Intervlag_attribute_restriction/static/src/css/**/*',
         ],
-      },
+    },
     'license': "AGPL-3",
     'images': [],
     'installable': True,

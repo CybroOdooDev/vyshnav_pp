@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="1">
+    <record id="gift_selected" model="mail.template">
+      <field name="name">User:Gift Selected</field>
+      <field name="subject">{{object.name}} Selected Gift</field>
+      <field name="body_html" type="html">
+          <strong style="font-weight: bolder"
+  ><p
+    style="
+      margin: 0px;
+      font-size: 13px;
+      font-family: 'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;
+    "
+  >
+    Hello
+  </p>
+</strong>
+<p
+  style="
+    margin: 0px;
+    font-size: 13px;
+    font-family: 'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;
+  "
+>
+  <t t-out="object.name" /> selected his/her gift
+</p>
+<div
+  style="
+    font-size: 13px;
+    font-family: 'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;
+  "
+>
+  <t t-if="object.selected_gift_id">
+    <div
+      style="
+        font-size: 13px;
+        font-family: 'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;
+      "
+    >
+      <img
+        style="
+          border-style: none;
+          vertical-align: middle;
+          width: 100px;
+          height: 100px;
+          object-fit: contain;
+        "
+        alt="Product image"
+        width="100"
+        height="100"
+        t-attf-src="/web/image/product.product/{{ object.selected_gift_id.id }}/image_1920"
+      />
+    </div>
+    <div
+      style="
+        font-size: 13px;
+        font-family: 'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;
+      "
+    >
+      <span><t t-out="object.selected_gift_id.name" /></span>
+    </div>
+  </t>
+
+  <t t-if="object.selected_gift2_id">
+    <div
+      style="
+        font-size: 13px;
+        font-family: 'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;
+      "
+    >
+      <img
+        style="
+          border-style: none;
+          vertical-align: middle;
+          width: 100px;
+          height: 100px;
+          object-fit: contain;
+        "
+        alt="Product image"
+        width="100"
+        height="100"
+        t-attf-src="/web/image/product.product/{{ object.selected_gift2_id.id }}/image_1920"
+      />
+    </div>
+    <div
+      style="
+        font-size: 13px;
+        font-family: 'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;
+      "
+    >
+      <span><t t-out="object.selected_gift2_id.name" /></span>
+    </div>
+  </t>
+
+  <t t-if="object.selected_gift3_id">
+    <div
+      style="
+        font-size: 13px;
+        font-family: 'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;
+      "
+    >
+      <img
+        style="
+          border-style: none;
+          vertical-align: middle;
+          width: 100px;
+          height: 100px;
+          object-fit: contain;
+        "
+        alt="Product image"
+        width="100"
+        height="100"
+        t-attf-src="/web/image/product.product/{{ object.selected_gift3_id.id }}/image_1920"
+      />
+    </div>
+    <div
+      style="
+        font-size: 13px;
+        font-family: 'Lucida Grande', Helvetica, Verdana, Arial, sans-serif;
+      "
+    >
+      <span><t t-out="object.selected_gift3_id.name" /></span>
+    </div>
+  </t>
+</div>
+      </field>
+    </record>
+  </data>
+</odoo>
